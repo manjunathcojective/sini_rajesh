@@ -1,0 +1,335 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@variant desktop (@media (min-width: 1024px));
+@variant tablet (@media (min-width: 768px) and (max-width: 1023px));
+@variant mobile (@media (max-width: 767px));
+
+:root {
+  --font-serif: "Cormorant Garamond",
+  Georgia,
+  serif;
+  --font-sans: "Manrope",
+  system-ui,
+  -apple-system,
+  sans-serif;
+  --color-brand: #D4717A;
+  --color-brand-hover: #C25F69;
+
+  /* ========================================================================= */
+  /* UTOPIA FLUID TYPOGRAPHY (Viewport: 375px -> 1440px)                      */
+  /* ========================================================================= */
+  --font-fluid-display: clamp(4.5rem, -0.077rem + 19.53vw, 17.5rem);
+  /* 72px -> 280px (Big Brand Watermark) */
+  --font-fluid-hero: clamp(2.25rem, 1.766rem + 2.066vw, 3.625rem);
+  /* 36px -> 58px (Hero Heading) */
+  --font-fluid-h2: clamp(1.75rem, 1.442rem + 1.315vw, 2.625rem);
+  /* 28px -> 42px (Section Headings) */
+  --font-fluid-h3: clamp(1.25rem, 1.122rem + 0.546vw, 1.613rem);
+  /* 20px -> 25.81px (Cards & Column Headings) */
+  --font-fluid-body: clamp(0.906rem, 0.873rem + 0.141vw, 1rem);
+  /* 14.5px -> 16px (Paragraphs & Links) */
+  --font-fluid-small: clamp(0.813rem, 0.791rem + 0.094vw, 0.875rem);
+  /* 13px -> 14px (Meta & Subtext) */
+
+  /* ========================================================================= */
+  /* UTOPIA FLUID SPACING & GUTTERS (Viewport: 375px -> 1440px)                */
+  /* ========================================================================= */
+  --space-fluid-gutter: clamp(1.25rem, -0.073rem + 5.634vw, 5rem);
+  /* 20px -> 80px (Section Horizontal Padding) */
+  --space-fluid-gap: clamp(1rem, 0.824rem + 0.751vw, 1.5rem);
+  /* 16px -> 24px (Card / Column Gaps) */
+  --space-fluid-section: clamp(2rem, 1.296rem + 3.0vw, 4rem);
+  /* 32px -> 64px (Vertical Section Spacing) */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FEFEFE;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================================================= */
+/* PREMIUM KEYFRAME ANIMATIONS                                               */
+/* ========================================================================= */
+
+/* Cinematic slow background drift */
+@keyframes bgDrift {
+
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+
+  50% {
+    transform: scale(1.02) translateY(-4px);
+  }
+}
+
+.animate-bg-drift {
+  animation: bgDrift 22s ease-in-out infinite;
+}
+
+/* Portrait Smooth Entrance */
+@keyframes portraitReveal {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 35px) scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.animate-portrait {
+  animation: portraitReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered Text Slide-up Reveal */
+@keyframes textSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-text-reveal {
+  opacity: 0;
+  animation: textSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fade-up with Scale */
+@keyframes fadeUpSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUpSmooth 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fade-in from Left (Eyebrow) */
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-left {
+  opacity: 0;
+  animation: fadeLeft 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle Breathing Dot */
+@keyframes dotGlow {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.animate-dot-pulse {
+  animation: dotGlow 3.5s ease-in-out infinite;
+}
+
+/* Card Smooth Initial Scale-in */
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-card-entrance {
+  animation: cardEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Shimmer Light Reflection on Button */
+@keyframes buttonShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-shimmer {
+  animation: buttonShimmer 3s ease-in-out infinite;
+}
+
+/* Infinite Carousel Marquee (Leftwards) */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - (var(--carousel-gap, 24px) / 2)));
+  }
+}
+
+.animate-marquee {
+  animation: marqueeScroll 35s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+/* Infinite Tagline Carousel (Moving Leftwards) */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tagline-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 36s linear infinite;
+  will-change: transform;
+}
+
+.animate-tagline-left:hover,
+.animate-tagline-left:focus-within {
+  animation-play-state: paused;
+}
+
+/* Desktop-only Automatic Marquee (>= 1024px) */
+@media (min-width: 1024px) {
+  .desktop-marquee {
+    animation: marqueeScroll 35s linear infinite !important;
+  }
+
+  .desktop-marquee:hover,
+  .desktop-marquee:focus-within {
+    animation-play-state: paused !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .desktop-marquee {
+    animation: none !important;
+  }
+}
+
+/* Animation Delays */
+.delay-50 {
+  animation-delay: 50ms;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-250 {
+  animation-delay: 250ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-350 {
+  animation-delay: 350ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-450 {
+  animation-delay: 450ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-550 {
+  animation-delay: 550ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-650 {
+  animation-delay: 650ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

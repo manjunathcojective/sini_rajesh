@@ -1,0 +1,307 @@
+.footer {
+  width: 100%;
+  overflow: hidden;
+  background-color: #FEFEFE;
+  display: flex;
+  justify-content: center;
+}
+
+.canvas {
+  transform-origin: top center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  width: 1440px;
+  height: 642px;
+  padding: 60px 80px 20px 80px;
+  gap: 10px;
+}
+
+.bgWrapper {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+  max-width: none;
+  width: 1440px;
+  height: 1013px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gradientOverlay {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 1440px;
+  height: 446px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(208, 117, 120, 0.5) 0%,
+    rgba(248, 239, 222, 0) 100%
+  );
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1280px;
+  height: 562px;
+  gap: 100px;
+}
+
+.topSection {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 1280px;
+  height: 164px;
+  gap: 273px;
+}
+
+.brandCol {
+  width: 319px;
+  height: 111px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.brandNameGroup {
+  width: 319px;
+  height: 61px;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.brandName {
+  width: 319px;
+  height: 16px;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 25.81px;
+  line-height: 100%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+}
+
+.brandRole {
+  width: 319px;
+  height: 12px;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+}
+
+.brandTagline {
+  width: 319px;
+  height: 34px;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 110%;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.linksWrapper {
+  width: 686px;
+  height: 164px;
+  gap: 79px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.linksCol {
+  width: 172px;
+  height: 164px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.linksCol2 {
+  width: 184px;
+  height: 146px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.colHeading {
+  height: 16px;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 25.81px;
+  line-height: 100%;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.quickLinksList {
+  width: 172px;
+  height: 124px;
+  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.infoLinksList {
+  width: 184px;
+  height: 106px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.linkItem {
+  height: 12px;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: #FFFFFF;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.linkItem:hover {
+  color: rgba(255, 255, 255, 0.8);
+  transform: translateX(2px);
+}
+
+.addressText {
+  width: 184px;
+  height: 34px;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 110%;
+  color: #FFFFFF;
+}
+
+.socialCol {
+  width: 172px;
+  height: 80px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.socialWrapper {
+  width: 172px;
+  height: 40px;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.socialBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.25);
+  transition: all 0.3s;
+}
+
+.socialLink:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+.bigTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  pointer-events: none;
+  width: 1280px;
+  height: 175px;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 280px;
+  line-height: 100%;
+  text-align: center;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.bottomBar {
+  width: 1280px;
+  height: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  padding-top: 10px;
+}
+
+.bottomLink {
+  height: 12px;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: #FFFFFF;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.bottomLink:hover {
+  opacity: 0.75;
+}
+
+.copyright {
+  height: 12px;
+  opacity: 0.75;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  text-align: center;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+}

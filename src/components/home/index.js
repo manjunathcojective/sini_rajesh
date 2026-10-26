@@ -1,0 +1,13 @@
+export { default as Hero } from "./Hero";
+export { default as InspirationQuote } from "./InspirationQuote";
+export { default as AboutMe } from "./AboutMe";
+export { default as Philosophy } from "./Philosophy";
+export { default as HowCanIHelp } from "./HowCanIHelp";
+export { default as Transform } from "./Transform";
+export { default as Experience } from "./Experience";
+export { default as Testimonials } from "./Testimonials";
+export { default as SayHello } from "./SayHello";
+export { default as Footer } from "./Footer";
+export { default as Navbar } from "./Navbar";
+export { default as PhilosophyCard } from "./PhilosophyCard";
+export { default as TrustedByCard } from "./TrustedByCard";
