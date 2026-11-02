@@ -165,6 +165,7 @@ export async function POST(request) {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
       },
       body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(5000),
     });
 
     const formSubmitData = await formSubmitRes.json().catch(() => ({}));

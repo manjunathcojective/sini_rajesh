@@ -97,31 +97,90 @@ export default function ContactForm() {
     try {
       setStatus("loading");
 
-      // Send to server-side Next.js API (/api/contact)
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          firstName: formData.firstName.trim(),
-          lastName: formData.lastName.trim(),
-          email: formData.email.trim(),
-          phone: formData.phone.trim(),
-          organization: formData.organization.trim(),
-          service: formData.service,
-          message: formData.message.trim(),
-        }),
-      });
+      let delivered = false;
+      let alertMsg = "";
 
-      const data = await res.json().catch(() => ({}));
+      // 1. First attempt: Server API (/api/contact)
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            firstName: formData.firstName.trim(),
+            lastName: formData.lastName.trim(),
+            email: formData.email.trim(),
+            phone: formData.phone.trim(),
+            organization: formData.organization.trim(),
+            service: formData.service,
+            message: formData.message.trim(),
+          }),
+        });
 
-      if (res.ok && data.success) {
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          delivered = true;
+          alertMsg =
+            data.message ||
+            "Thank you for reaching out. Your message has been sent successfully.";
+        }
+      } catch (apiErr) {
+        console.warn("Server API send failed, trying direct browser delivery:", apiErr);
+      }
+
+      // 2. Client-side Direct Delivery Fallback (bypasses serverless Cloudflare blocking):
+      if (!delivered) {
+        try {
+          const directPayload = {
+            name: `${formData.firstName.trim()} ${formData.lastName.trim()}`.trim(),
+            email: formData.email.trim(),
+            phone: formData.phone.trim() || "Not provided",
+            organization: formData.organization.trim() || "Not provided",
+            service: formData.service || "General Inquiry",
+            message: formData.message.trim() || "No message provided",
+            _subject: `New Website Inquiry from ${formData.firstName.trim()} ${formData.lastName.trim()}`,
+            _template: "table",
+            _captcha: "false",
+            _cc: "revathi.cojective@gmail.com",
+          };
+
+          const directRes = await fetch(
+            "https://formsubmit.co/ajax/manjunath.cojective@gmail.com",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+              },
+              body: JSON.stringify(directPayload),
+            }
+          );
+
+          const directData = await directRes.json().catch(() => ({}));
+          if (
+            directRes.ok &&
+            (directData.success === true ||
+              directData.success === "true" ||
+              directData.status === "success" ||
+              directData.message)
+          ) {
+            delivered = true;
+            alertMsg =
+              directData.message ||
+              "Thank you for reaching out. Your message has been sent successfully.";
+          }
+        } catch (directErr) {
+          console.warn("Direct browser delivery also failed:", directErr);
+        }
+      }
+
+      if (delivered) {
         setStatus("success");
         setAlertMessage(
-          data.message ||
-          "Thank you for reaching out. I will get back to you soon."
+          alertMsg ||
+          "Thank you for reaching out. Your message has been sent successfully."
         );
         setShowModal(true);
         setFormData({
@@ -135,7 +194,7 @@ export default function ContactForm() {
         });
       } else {
         throw new Error(
-          data.error || data.message || "Failed to submit message"
+          "Unable to send message right now. Please email us directly at manjunath.cojective@gmail.com"
         );
       }
     } catch (err) {
