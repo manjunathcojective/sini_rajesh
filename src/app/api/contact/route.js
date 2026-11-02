@@ -24,12 +24,22 @@ export async function POST(request) {
     const rawRecipients =
       process.env.CONTACT_RECIPIENT_EMAILS ||
       process.env.CONTACT_RECIPIENT_EMAIL ||
+      process.env.CONTACT_EMAIL ||
+      process.env.CONTACT_EMAILS ||
+      process.env.RECIPIENT_EMAIL ||
+      process.env.RECIPIENT_EMAILS ||
+      process.env.EMAILS ||
+      process.env.EMAIL ||
+      process.env.MAILS ||
+      process.env.MAIL ||
+      process.env.MAIL_ID ||
+      process.env.MAIL_IDS ||
       process.env.SMTP_TO_EMAIL ||
       "";
 
     const recipientList = rawRecipients
       ? rawRecipients
-        .split(",")
+        .split(/[,;]+/)
         .map((e) => e.trim())
         .filter(Boolean)
       : smtpUser
@@ -37,6 +47,7 @@ export async function POST(request) {
         : [];
 
     const recipientEmail = recipientList.length > 0 ? recipientList.join(", ") : smtpUser;
+    console.log("Contact API -> Resolved recipients:", recipientList);
 
     // 1. Try SMTP if configured (Hostinger / Gmail / Custom SMTP)
     if (smtpHost && smtpUser && smtpPass) {
@@ -135,6 +146,7 @@ export async function POST(request) {
       ...(recipientList.length > 1 ? { _cc: recipientList.slice(1).join(", ") } : {}),
     };
 
+    console.log("Contact API -> Target endpoint:", targetEndpoint);
     const formSubmitRes = await fetch(targetEndpoint, {
       method: "POST",
       headers: {
@@ -145,6 +157,7 @@ export async function POST(request) {
     });
 
     const formSubmitData = await formSubmitRes.json().catch(() => ({}));
+    console.log("Contact API -> FormSubmit response:", formSubmitData);
 
     if (
       formSubmitRes.ok &&
