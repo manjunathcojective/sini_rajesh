@@ -3,23 +3,18 @@ import "@/styles/globals.css";
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",
 });
 
 const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
   variable: "--font-sans",
   display: "swap",
 });
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
   variable: "--font-instrument",
   display: "swap",
 });
