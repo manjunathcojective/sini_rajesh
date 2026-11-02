@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Default recipient email addresses
+const DEFAULT_RECIPIENT_EMAILS = [
+  "manjunath.cojective@gmail.com",
+  "revathi.cojective@gmail.com",
+];
+
 // Fallback FormSubmit token if SMTP is not configured
 const FORMSUBMIT_TOKEN = "0d301ed05ffe056a530f5320794928cc";
 
@@ -42,9 +48,7 @@ export async function POST(request) {
         .split(/[,;]+/)
         .map((e) => e.trim())
         .filter(Boolean)
-      : smtpUser
-        ? [smtpUser]
-        : [];
+      : DEFAULT_RECIPIENT_EMAILS;
 
     const recipientEmail = recipientList.length > 0 ? recipientList.join(", ") : smtpUser;
     console.log("Contact API -> Resolved recipients:", recipientList);
@@ -126,10 +130,16 @@ export async function POST(request) {
     }
 
     // 2. Direct Delivery Fallback: Delivers to the configured recipient email(s)
-    const primaryRecipient = recipientList[0] || null;
-    const targetEndpoint = primaryRecipient
-      ? `https://formsubmit.co/ajax/${encodeURIComponent(primaryRecipient)}`
-      : `https://formsubmit.co/ajax/${FORMSUBMIT_TOKEN}`;
+    const primaryRecipient = recipientList[0] || "manjunath.cojective@gmail.com";
+    const ccList = recipientList.slice(1).filter((e) => e !== primaryRecipient);
+    if (
+      !ccList.includes("revathi.cojective@gmail.com") &&
+      primaryRecipient !== "revathi.cojective@gmail.com"
+    ) {
+      ccList.push("revathi.cojective@gmail.com");
+    }
+
+    const targetEndpoint = `https://formsubmit.co/ajax/${encodeURIComponent(primaryRecipient)}`;
 
     const payload = {
       name: fullName,
@@ -143,7 +153,7 @@ export async function POST(request) {
       _subject: `New Inquiry from ${fullName} - Dr. Sini Rajesh Website`,
       _template: "table",
       _captcha: "false",
-      ...(recipientList.length > 1 ? { _cc: recipientList.slice(1).join(", ") } : {}),
+      ...(ccList.length > 0 ? { _cc: ccList.join(", ") } : {}),
     };
 
     console.log("Contact API -> Target endpoint:", targetEndpoint);
