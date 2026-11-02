@@ -1,0 +1,29 @@
+In WordPress Editor	HTML Output	How It Renders on Your Website
+Standard Paragraph	<p>	Manrope regular, 16px, line height 1.75, #1A1A1A
+Italicized text (Ctrl+I)	<em> / <i>	Manrope italic, #1A1A1A (for inline reflection thoughts)
+Heading 2 or 3	<h2> / <h3>	Cormorant Garamond bold italic, 24px, #1A1A1A
+Bulleted List	<ul><li>	Cormorant Garamond italic, 20px, with custom solid black bullet dot + light grey bottom underline (#E6E6E6)
+Quote Block or Separator + H3	<blockquote> or <hr><h3>	Takeaway Block: Top border in dusty rose (#D9A5AB), Cormorant Garamond bold italic heading, Manrope question text
+Step-by-Step: Adding or Updating a Blog Post in WordPress
+1. Post Details
+Go to WordPress Admin → Posts → Add New (or Edit an existing post).
+Title: Enter the blog title (e.g., The Power of Small Shifts).
+URL Slug (Permalink): Set the slug (e.g., the-power-of-small-shifts).
+Featured Image: Upload or select the card thumbnail (used in the Blog listing and "Similar Blogs").
+Category: Select or add the category (e.g., Mindset, Leadership).
+2. Writing Content in the WordPress Block Editor (Gutenberg)
+Normal Paragraphs: Type into a regular Paragraph block.
+To format inner reflection quotes (e.g., "Was my effort not good enough?"), highlight the words and click Italic (Ctrl + I).
+Subheadings: Add a Heading block (set to H2 or H3) for prompts like “Sounds familiar?”, “Why?”, or “What makes it special?”. The site automatically applies Cormorant Garamond bold italic.
+Bullet Quotes with Underlines:
+Add a List block (Bulleted).
+Type each quote (e.g., “I don’t know enough yet.”).
+Highlight the text and select Italic.
+On the frontend, the website automatically removes default browser bullets and gives each item the black bullet dot, Cormorant Garamond font, and #E6E6E6 bottom border line.
+Takeaway Box ("One thought to take with you:"):
+Option A (Quote Block): Add a Quote block, with the first line as One thought to take with you: and the second line as your reflection question.
+Option B (Separator): Add a Separator block (---), followed by a Heading 3 (One thought to take with you:) and a Paragraph with the question.
+Both options automatically render the #D9A5AB top rose line and typography.
+3. Publish / Update
+Click Publish or Update.
+Next.js fetches the new content via GraphQL and caches it with Incremental Static Regeneration (revalidating every 30 seconds for fast updates).

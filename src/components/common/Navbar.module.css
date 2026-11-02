@@ -1,0 +1,327 @@
+/* ========================================================================= */
+/* REUSABLE NAVBAR STYLES (src/components/common/Navbar.module.css)          */
+/* ========================================================================= */
+
+.navHeader {
+  position: relative;
+  width: 100%;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1353px;
+  height: 64px;
+  padding: 10px 40px;
+}
+
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  line-height: 1;
+  text-align: center;
+}
+
+.logo:hover {
+  opacity: 0.95;
+  transform: translateY(-0.5px);
+}
+
+.logoTitle {
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(25px, 2.4vw, 32px);
+  line-height: 0.95;
+  color: #FFFFFF;
+  white-space: nowrap;
+  letter-spacing: -0.015em;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.logoSubtitle {
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(11.5px, 0.9vw, 13.5px);
+  line-height: 1.1;
+  color: #F7EDE9;
+  white-space: nowrap;
+  letter-spacing: 0.12em;
+  text-align: center;
+  margin-top: 3px;
+  width: 100%;
+  transition: color 0.3s ease;
+}
+
+/* Desktop Navigation Links */
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 14px;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex;
+  }
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 16px 10px 0 10px;
+  text-decoration: none;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.navLabel {
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 100%;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+
+.navUnderlineTrack {
+  position: relative;
+  width: 100%;
+  height: 1.5px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.navUnderlineGlow {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-out;
+  box-shadow: 0 0 8px rgba(208, 117, 120, 0.8);
+  background: linear-gradient(90deg,
+      rgba(208, 117, 120, 0) 0%,
+      rgba(208, 117, 120, 0.7) 10%,
+      #D07578 25%,
+      #D07578 75%,
+      rgba(208, 117, 120, 0.7) 90%,
+      rgba(208, 117, 120, 0) 100%);
+}
+
+.navItem:hover .navUnderlineGlow,
+.navItemActive .navUnderlineGlow {
+  transform: scaleX(1);
+}
+
+.navUnderlineSolid {
+  position: absolute;
+  inset: 0;
+  background-color: #D07578;
+  opacity: 0;
+  transition: opacity 0.2s ease 0.25s;
+}
+
+.navItem:hover .navUnderlineSolid,
+.navItemActive .navUnderlineSolid {
+  opacity: 1;
+}
+
+/* Call to Action Button */
+.navBtnWrapper {
+  display: none;
+  width: 138px;
+  height: 44px;
+}
+
+@media (min-width: 768px) {
+  .navBtnWrapper {
+    display: block;
+  }
+}
+
+.navBtn {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 138px;
+  height: 44px;
+  border-radius: 6px;
+  background-color: #D07578;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.navBtn:hover {
+  box-shadow: 0 8px 30px rgba(208, 117, 120, 0.5);
+  transform: translateY(-2px);
+}
+
+.navBtn:active {
+  transform: translateY(0);
+}
+
+.liquidDot {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  transition: all 1s ease-out;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.navBtn:hover .liquidDot {
+  transform: translateY(-50%) scale(150);
+}
+
+.navBtnContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-left: 12px;
+  pointer-events: none;
+  transition: all 0.5s ease-out;
+}
+
+.navBtnText {
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  color: #FFFFFF;
+  transition: color 0.5s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.navBtn:hover .navBtnText {
+  color: #D07578;
+}
+
+/* Mobile Hamburger Toggle */
+.mobileMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  z-index: 60;
+}
+
+@media (min-width: 768px) {
+  .mobileMenuButton {
+    display: none;
+  }
+}
+
+/* Mobile Slide Down Drawer */
+.mobileDrawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #627861;
+  padding: 20px 24px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  z-index: 55;
+}
+
+.mobileNavItem {
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #FFFFFF;
+  padding: 10px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: color 0.2s;
+}
+
+.mobileNavItem:hover {
+  color: #D07578;
+}
+
+.mobileCtaBtn {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  background-color: #D07578;
+  color: #FFFFFF;
+  border-radius: 6px;
+  text-decoration: none;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Theme variants */
+.themeDark {
+  background-color: #627861;
+}
+
+.themeDarkGreen {
+  background-color: #4B634A;
+}
+
+.themeTransparent {
+  background-color: transparent;
+}
+
+.themeLight {
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.themeLight .logo {
+  color: #141414;
+}
+
+.themeLight .navLabel {
+  color: #141414;
+}
+
+.themeLight .mobileMenuButton {
+  color: #141414;
+}

@@ -1,0 +1,396 @@
+.sectionWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #FEFEFE;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Outer Section: width 1440px, height 758px, padding 60px 100px, gap 60px */
+.sectionCanvas {
+  box-sizing: border-box;
+  width: 1440px;
+  height: 758px;
+  padding: 60px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  transform-origin: top center;
+  position: relative;
+}
+
+/* Frame 53: width: 1240px, height: 38px, justify-content: space-between, opacity: 1 */
+.frame53 {
+  box-sizing: border-box;
+  width: 1240px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 1;
+}
+
+/* Similar Blogs Heading */
+.similarBlogsHeading {
+  box-sizing: border-box;
+  width: 659px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-serif, "Cormorant Garamond", Georgia, serif);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 41.62px;
+  line-height: 45px;
+  letter-spacing: 0%;
+  color: rgba(20, 20, 20, 1);
+  margin: 0;
+  opacity: 1;
+}
+
+/* View All Button: 109px x 38px, padding: 12px 16px, border-radius: 4px, border: 1px solid rgba(208, 117, 120, 0.25) */
+.viewAllBtn {
+  box-sizing: border-box;
+  position: relative;
+  width: 109px;
+  height: 38px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid rgba(208, 117, 120, 0.25);
+  background: transparent;
+  text-decoration: none;
+  opacity: 1;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.viewAllBtn:hover {
+  border-color: rgba(208, 117, 120, 1);
+  box-shadow: 0 4px 16px rgba(208, 117, 120, 0.25);
+}
+
+/* Liquid Dot that expands across the button on hover */
+.liquidDot {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(208, 117, 120, 1);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.viewAllBtn:hover .liquidDot {
+  transform: translateY(-50%) scale(150);
+}
+
+/* Inner content wrapper */
+.viewAllContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* View All Static Dot in default state */
+.staticDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(208, 117, 120, 1);
+  flex-shrink: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.viewAllBtn:hover .staticDot {
+  opacity: 0;
+  transform: scale(0);
+  width: 0;
+  margin-right: -10px;
+}
+
+/* View All Text: Manrope 600, 16px, centers and changes to white on hover */
+.viewAllText {
+  box-sizing: border-box;
+  font-family: var(--font-sans, "Manrope", sans-serif);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: rgba(208, 117, 120, 1);
+  white-space: nowrap;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.viewAllBtn:hover .viewAllText {
+  color: #FFFFFF;
+}
+
+/* Frame 135: width: 1240px, height: 540px, gap: 24px, opacity: 1 */
+.frame135 {
+  box-sizing: border-box;
+  width: 1240px;
+  height: 540px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 24px;
+  opacity: 1;
+}
+
+/* Individual Card: 397.33px x 540px, border-radius: 16px, padding: 16px, gap: 16px */
+.card397 {
+  box-sizing: border-box;
+  width: 397.33px;
+  height: 540px;
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(208, 117, 120, 0.5);
+  background: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.card397:hover {
+  transform: translateY(-6px);
+  border-color: rgba(208, 117, 120, 0.9);
+  box-shadow: 0 16px 36px rgba(208, 117, 120, 0.18);
+}
+
+/* Image Rectangle: 365.33px x 300px, border-radius: 12px */
+.imageRect {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #F4EAE6;
+  flex-shrink: 0;
+}
+
+.cardImg {
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card397:hover .cardImg {
+  transform: scale(1.05);
+}
+
+/* Frame 130: height: 102px */
+.frame130 {
+  box-sizing: border-box;
+  width: 100%;
+  height: 102px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+  flex-shrink: 0;
+  opacity: 1;
+}
+
+/* blog-heading: Manrope Bold 20.32px */
+.blogHeading {
+  box-sizing: border-box;
+  width: 100%;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20.32px;
+  line-height: 120%;
+  letter-spacing: 0%;
+  color: rgba(20, 20, 20, 1);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  transition: color 0.3s ease;
+}
+
+.card397:hover .blogHeading {
+  color: #D07578;
+}
+
+/* blog-info: Manrope Regular 16px, height: 34px */
+.blogInfo {
+  box-sizing: border-box;
+  width: 100%;
+  height: 34px;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 17px;
+  letter-spacing: 0%;
+  color: rgba(20, 20, 20, 1);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  opacity: 1;
+}
+
+/* Frame 138: height: 21px, padding-top: 10px, border-top */
+.frame138 {
+  box-sizing: border-box;
+  width: 100%;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 1px solid rgba(208, 117, 120, 0.5);
+  opacity: 1;
+}
+
+.timeToRead {
+  box-sizing: border-box;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: rgba(20, 20, 20, 1);
+  margin: 0;
+}
+
+.dateText {
+  box-sizing: border-box;
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: rgba(20, 20, 20, 1);
+  margin: 0;
+}
+
+/* Read More Button: height: 44px, border-radius: 6px, bg: #D07578 */
+.readMoreBtn {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 44px;
+  min-height: 44px;
+  border-radius: 6px;
+  background-color: #D07578;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  padding: 0;
+}
+
+.readMoreBtn:hover {
+  border: 1px solid rgba(208, 117, 120, 0.5);
+  box-shadow: 0 8px 20px rgba(208, 117, 120, 0.25);
+}
+
+.liquidFill {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.readMoreBtn:hover .liquidFill {
+  transform: translate(-50%, -50%) scale(45);
+}
+
+.btnInner {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dotIcon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  flex-shrink: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1;
+  transform: scale(1);
+}
+
+.readMoreBtn:hover .dotIcon {
+  opacity: 0;
+  transform: scale(0);
+  width: 0;
+  margin-right: -10px;
+}
+
+.cardBtnText {
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  color: #FFFFFF;
+  transition: color 0.5s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.readMoreBtn:hover .cardBtnText {
+  color: #D07578;
+}
+
+
+
+
+
+
+

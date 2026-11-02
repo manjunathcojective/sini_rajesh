@@ -1,0 +1,564 @@
+@import "tailwindcss";
+@config "../../tailwind.config.js";
+
+@variant desktop (@media (min-width: 1024px));
+@variant tablet (@media (min-width: 768px) and (max-width: 1023px));
+@variant mobile (@media (max-width: 767px));
+
+:root {
+  --font-serif: "Cormorant Garamond",
+  Georgia,
+  serif;
+  --font-sans: "Manrope",
+  system-ui,
+  -apple-system,
+  sans-serif;
+  --color-brand: #D4717A;
+  --color-brand-hover: #C25F69;
+
+  /* ========================================================================= */
+  /* UTOPIA FLUID TYPOGRAPHY (Viewport: 375px -> 1440px)                      */
+  /* ========================================================================= */
+  --font-fluid-display: clamp(4.5rem, -0.077rem + 19.53vw, 17.5rem);
+  /* 72px -> 280px (Big Brand Watermark) */
+  --font-fluid-hero: clamp(2.25rem, 1.766rem + 2.066vw, 3.625rem);
+  /* 36px -> 58px (Hero Heading) */
+  --font-fluid-h2: clamp(1.75rem, 1.442rem + 1.315vw, 2.625rem);
+  /* 28px -> 42px (Section Headings) */
+  --font-fluid-h3: clamp(1.25rem, 1.122rem + 0.546vw, 1.613rem);
+  /* 20px -> 25.81px (Cards & Column Headings) */
+  --font-fluid-body: clamp(0.906rem, 0.873rem + 0.141vw, 1rem);
+  /* 14.5px -> 16px (Paragraphs & Links) */
+  --font-fluid-small: clamp(0.813rem, 0.791rem + 0.094vw, 0.875rem);
+  /* 13px -> 14px (Meta & Subtext) */
+
+  /* ========================================================================= */
+  /* UTOPIA FLUID SPACING & GUTTERS (Viewport: 375px -> 1440px)                */
+  /* ========================================================================= */
+  --space-fluid-gutter: clamp(1.25rem, -0.073rem + 5.634vw, 5rem);
+  /* 20px -> 80px (Section Horizontal Padding) */
+  --space-fluid-gap: clamp(1rem, 0.824rem + 0.751vw, 1.5rem);
+  /* 16px -> 24px (Card / Column Gaps) */
+  --space-fluid-section: clamp(2rem, 1.296rem + 3.0vw, 4rem);
+  /* 32px -> 64px (Vertical Section Spacing) */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FEFEFE;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================================================= */
+/* PREMIUM KEYFRAME ANIMATIONS                                               */
+/* ========================================================================= */
+
+/* Cinematic slow background drift */
+@keyframes bgDrift {
+
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+
+  50% {
+    transform: scale(1.02) translateY(-4px);
+  }
+}
+
+.animate-bg-drift {
+  animation: bgDrift 22s ease-in-out infinite;
+}
+
+/* Portrait Smooth Entrance */
+@keyframes portraitReveal {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 35px) scale(0.97);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.animate-portrait {
+  animation: portraitReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Staggered Text Slide-up Reveal */
+@keyframes textSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-text-reveal {
+  opacity: 0;
+  animation: textSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fade-up with Scale */
+@keyframes fadeUpSmooth {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUpSmooth 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Fade-in from Left (Eyebrow) */
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-left {
+  opacity: 0;
+  animation: fadeLeft 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Subtle Breathing Dot */
+@keyframes dotGlow {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.animate-dot-pulse {
+  animation: dotGlow 3.5s ease-in-out infinite;
+}
+
+/* Card Smooth Initial Scale-in */
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-card-entrance {
+  animation: cardEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Shimmer Light Reflection on Button */
+@keyframes buttonShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-shimmer {
+  animation: buttonShimmer 3s ease-in-out infinite;
+}
+
+/* Infinite Carousel Marquee (Leftwards) */
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - (var(--carousel-gap, 24px) / 2)));
+  }
+}
+
+.animate-marquee {
+  animation: marqueeScroll 35s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+/* Infinite Tagline Carousel (Moving Leftwards) */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tagline-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 36s linear infinite;
+  will-change: transform;
+}
+
+.animate-tagline-left:hover,
+.animate-tagline-left:focus-within {
+  animation-play-state: paused;
+}
+
+/* Constantly scrolling tagline at calm, low speed */
+@keyframes marqueeSlow {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tagline-slow {
+  display: flex;
+  width: max-content;
+  animation: marqueeSlow 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-tagline-slow:hover,
+.animate-tagline-slow:focus-within {
+  animation-play-state: paused;
+}
+
+/* Decelerating Tagline (Starts at 2x speed, smoothly slows down, and stops with all 6 points) */
+@keyframes taglineDecelerate {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tagline-decelerate {
+  display: flex;
+  width: 200%;
+  animation: taglineDecelerate 6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+/* Desktop-only Automatic Marquee (>= 1024px) */
+@media (min-width: 1024px) {
+  .desktop-marquee {
+    animation: marqueeScroll 35s linear infinite !important;
+  }
+
+  .desktop-marquee:hover,
+  .desktop-marquee:focus-within {
+    animation-play-state: paused !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .desktop-marquee {
+    animation: none !important;
+  }
+}
+
+/* Animation Delays */
+.delay-50 {
+  animation-delay: 50ms;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-150 {
+  animation-delay: 150ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-250 {
+  animation-delay: 250ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-350 {
+  animation-delay: 350ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-450 {
+  animation-delay: 450ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-550 {
+  animation-delay: 550ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-650 {
+  animation-delay: 650ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+@keyframes route-loading {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.route-loading-bar {
+  animation: route-loading 0.8s ease-in-out infinite;
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================================================= */
+/* WORDPRESS BLOG CONTENT SYSTEM (Matching Blogs_Website_Design_Layout.docx)  */
+/* ========================================================================= */
+
+.wp-blog-content {
+  width: 100%;
+  color: #1A1A1A;
+}
+
+.wp-blog-content p {
+  font-family: var(--font-sans), "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: clamp(15px, 0.2vw + 14px, 16px);
+  line-height: 1.75;
+  color: #1A1A1A;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.wp-blog-content p em,
+.wp-blog-content p i {
+  font-style: italic;
+  color: #1A1A1A;
+}
+
+.wp-blog-content p strong,
+.wp-blog-content p b {
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+/* Headings Base (Cormorant Garamond Bold Italic) */
+.wp-blog-content h1,
+.wp-blog-content h2,
+.wp-blog-content h3,
+.wp-blog-content h4,
+.wp-blog-content h5,
+.wp-blog-content h6,
+.wp-blog-content .wp-block-heading {
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  color: #1A1A1A !important;
+}
+
+/* H2: Main Section & Takeaway Headings (Word Doc: 20pt-24pt ~ 26px-28px) */
+.wp-blog-content h2,
+.wp-blog-content h2.wp-block-heading {
+  font-size: clamp(24px, 1.6vw + 18px, 28px) !important;
+  line-height: 1.2 !important;
+  margin-top: 2.25rem !important;
+  margin-bottom: 0.875rem !important;
+}
+
+/* H3: Reflection Prompts & Subheadings (Word Doc: 16pt ~ 20px-21.5px) */
+.wp-blog-content h3,
+.wp-blog-content h3.wp-block-heading {
+  font-size: clamp(19px, 0.4vw + 18px, 21.5px) !important;
+  line-height: 1.35 !important;
+  margin-top: 1.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* H4: Smaller Subsections */
+.wp-blog-content h4,
+.wp-blog-content h4.wp-block-heading {
+  font-size: clamp(17px, 0.3vw + 16px, 18.5px) !important;
+  line-height: 1.4 !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.wp-blog-content ul,
+.wp-blog-content ol,
+.wp-blog-content .wp-block-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0.5rem 0 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.wp-blog-content li,
+.wp-blog-content .wp-block-list li {
+  display: flex !important;
+  align-items: flex-start !important;
+  width: 100%;
+  padding: 0.75rem 0 !important;
+  margin: 0.25rem 0 !important;
+  border-bottom: 1px solid #E6E6E6 !important;
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  font-size: clamp(17px, 0.8vw + 14px, 20px) !important;
+  line-height: 1.45 !important;
+  color: #1A1A1A !important;
+  box-sizing: border-box;
+}
+
+.wp-blog-content li::before,
+.wp-blog-content .wp-block-list li::before {
+  content: "" !important;
+  display: inline-block;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background-color: #1A1A1A !important;
+  margin-top: 9px !important;
+  margin-right: 12px !important;
+  flex-shrink: 0 !important;
+}
+
+.wp-blog-content hr,
+.wp-blog-content hr.wp-block-separator,
+.wp-blog-content .wp-block-separator {
+  border: none !important;
+  border-top: 1px solid #D9A5AB !important;
+  margin: 2.75rem 0 1.5rem 0 !important;
+  opacity: 1 !important;
+  width: 100% !important;
+}
+
+/* Takeaway H2 right below the separator */
+.wp-blog-content hr+h2,
+.wp-blog-content .wp-block-separator+h2,
+.wp-blog-content hr+h2.wp-block-heading,
+.wp-blog-content .wp-block-separator+h2.wp-block-heading {
+  margin-top: 0.5rem !important;
+  font-size: clamp(24px, 1.6vw + 18px, 28px) !important;
+  line-height: 1.2 !important;
+}
+
+.wp-blog-content blockquote,
+.wp-blog-content .wp-block-quote,
+.wp-blog-content .takeaway {
+  border-top: 1px solid #D9A5AB !important;
+  border-left: none !important;
+  margin-top: 2.5rem !important;
+  padding-top: 1.75rem !important;
+  margin-bottom: 1rem !important;
+  padding-left: 0 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.wp-blog-content blockquote h3,
+.wp-blog-content blockquote p:first-of-type,
+.wp-blog-content .takeaway h3 {
+  font-family: var(--font-serif), "Cormorant Garamond", Georgia, serif !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  font-size: clamp(22px, 1.4vw + 18px, 28px) !important;
+  line-height: 1.2 !important;
+  color: #1A1A1A !important;
+  margin: 0 !important;
+}
+
+.wp-blog-content blockquote p:not(:first-of-type),
+.wp-blog-content .takeaway p {
+  font-family: var(--font-sans), "Manrope", sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  font-size: clamp(15px, 0.2vw + 14px, 16px) !important;
+  line-height: 1.75 !important;
+  color: #1A1A1A !important;
+  margin: 0 !important;
+}

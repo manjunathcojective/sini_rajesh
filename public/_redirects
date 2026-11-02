@@ -1,0 +1,16 @@
+# API route to Netlify function
+/api/contact    /.netlify/functions/contact    200
+
+# Service parent redirect
+/services       /services/organisational-diagnostic-study   301
+/services/      /services/organisational-diagnostic-study   301
+
+# Static clean URL rewrites (status 200, no redirects)
+/about                                    /about.html                                     200
+/contact                                  /contact.html                                   200
+/blogs                                    /blogs.html                                     200
+/services/coaching                        /services/coaching.html                         200
+/services/happiness-coaching              /services/happiness-coaching.html               200
+/services/hr-consultancy                  /services/hr-consultancy.html                   200
+/services/mentoring                       /services/mentoring.html                        200
+/services/organisational-diagnostic-study /services/organisational-diagnostic-study.html  200
