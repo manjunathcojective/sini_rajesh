@@ -53,7 +53,102 @@ export async function POST(request) {
     const recipientEmail = recipientList.length > 0 ? recipientList.join(", ") : smtpUser;
     console.log("Contact API -> Resolved recipients:", recipientList);
 
-    // 1. Try SMTP if configured (Hostinger / Gmail / Custom SMTP)
+    // 1. Deliver via Resend (Official Next.js/Vercel Email Delivery)
+    const resendApiKey = process.env.RESEND_API_KEY;
+
+    if (resendApiKey) {
+      try {
+        const emailHtml = `
+          <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #E6E6E6; border-radius: 8px; overflow: hidden; background-color: #FEFEFE;">
+            <div style="background-color: #BA676A; padding: 24px 28px; color: #FFFFFF;">
+              <h2 style="margin: 0; font-size: 22px; font-weight: 600; font-family: Georgia, serif; font-style: italic;">Dr. Sini Rajesh</h2>
+              <p style="margin: 4px 0 0 0; font-size: 14px; opacity: 0.9;">New Website Inquiry</p>
+            </div>
+            <div style="padding: 28px;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+                <tr style="border-bottom: 1px solid #F0F0F0;">
+                  <td style="padding: 10px 0; font-weight: 600; color: #595959; width: 140px;">Name:</td>
+                  <td style="padding: 10px 0; color: #1A1A1A; font-weight: 500;">${fullName}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F0F0F0;">
+                  <td style="padding: 10px 0; font-weight: 600; color: #595959;">Email:</td>
+                  <td style="padding: 10px 0; color: #1A1A1A;"><a href="mailto:${email}" style="color: #BA676A; text-decoration: none;">${email}</a></td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F0F0F0;">
+                  <td style="padding: 10px 0; font-weight: 600; color: #595959;">Phone:</td>
+                  <td style="padding: 10px 0; color: #1A1A1A;">${phone || "Not provided"}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F0F0F0;">
+                  <td style="padding: 10px 0; font-weight: 600; color: #595959;">Organization:</td>
+                  <td style="padding: 10px 0; color: #1A1A1A;">${organization || "Not provided"}</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F0F0F0;">
+                  <td style="padding: 10px 0; font-weight: 600; color: #595959;">Service / Area:</td>
+                  <td style="padding: 10px 0; color: #BA676A; font-weight: 600;">${service || "General Inquiry"}</td>
+                </tr>
+                <tr>
+                  <td style="padding: 14px 0 6px 0; font-weight: 600; color: #595959; vertical-align: top;">Message:</td>
+                  <td style="padding: 14px 0 6px 0; color: #1A1A1A; line-height: 1.6; white-space: pre-wrap;">${message || "No message provided."}</td>
+                </tr>
+              </table>
+            </div>
+            <div style="background-color: #F8F8F8; padding: 14px 28px; font-size: 12px; color: #777777; border-top: 1px solid #EAEAEA;">
+              This email was sent from the contact form on Dr. Sini Rajesh website. You can reply directly to this email to contact ${fullName}.
+            </div>
+          </div>
+        `;
+
+        // First try delivering to both; if sandbox domain restricts to account owner, fallback to primary
+        let resendPayload = {
+          from: "Dr. Sini Rajesh Website <onboarding@resend.dev>",
+          to: ["manjunath.cojective@gmail.com", "revathi.cojective@gmail.com"],
+          reply_to: email,
+          subject: `New Inquiry from ${fullName} - ${service || "Website Contact"}`,
+          html: emailHtml,
+        };
+
+        let resendRes = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendApiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(resendPayload),
+          signal: AbortSignal.timeout(5000),
+        });
+
+        if (!resendRes.ok) {
+          // Fallback to primary account owner
+          resendPayload.to = ["manjunath.cojective@gmail.com"];
+          resendRes = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${resendApiKey}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(resendPayload),
+            signal: AbortSignal.timeout(5000),
+          });
+        }
+
+        const resendData = await resendRes.json().catch(() => ({}));
+        if (resendRes.ok && resendData.id) {
+          console.log("Contact API -> Successfully sent via Resend:", resendData.id);
+          return NextResponse.json(
+            {
+              success: true,
+              message:
+                "Thank you for reaching out. Your message has been sent successfully.",
+            },
+            { status: 200 }
+          );
+        }
+      } catch (resendErr) {
+        console.warn("Resend send error, attempting next method:", resendErr?.message || resendErr);
+      }
+    }
+
+    // 2. Try SMTP if configured (Hostinger / Gmail / Custom SMTP)
     if (smtpHost && smtpUser && smtpPass) {
       try {
         const smtpPort = parseInt(process.env.SMTP_PORT || "465", 10);
