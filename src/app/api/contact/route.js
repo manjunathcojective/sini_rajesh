@@ -152,6 +152,7 @@ export async function POST(request) {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
       },
       body: JSON.stringify(payload),
     });
@@ -159,17 +160,47 @@ export async function POST(request) {
     const formSubmitData = await formSubmitRes.json().catch(() => ({}));
     console.log("Contact API -> FormSubmit response:", formSubmitData);
 
-    if (
+    const isSuccess =
       formSubmitRes.ok &&
-      (formSubmitData.success === "true" ||
-        formSubmitData.success === true ||
-        formSubmitData.status === "success" ||
-        formSubmitData.message)
+      (formSubmitData.success === true ||
+        formSubmitData.success === "true" ||
+        formSubmitData.status === "success");
+
+    if (isSuccess) {
+      return NextResponse.json(
+        {
+          success: true,
+          message:
+            formSubmitData.message ||
+            "Thank you for reaching out. Your message has been sent successfully.",
+        },
+        { status: 200 }
+      );
+    }
+
+    // If FormSubmit requires one-time activation
+    if (
+      formSubmitData.message &&
+      (formSubmitData.message.toLowerCase().includes("activate") ||
+        formSubmitData.message.toLowerCase().includes("activation") ||
+        formSubmitData.message.toLowerCase().includes("confirm"))
     ) {
       return NextResponse.json(
         {
           success: true,
-          message: "Thank you for reaching out. Your message has been sent successfully.",
+          activationNeeded: true,
+          message:
+            "FormSubmit has sent a 1-time activation email to your inbox. Please check your inbox (and spam folder) and click 'Activate Form' to start receiving inquiries.",
+        },
+        { status: 200 }
+      );
+    }
+
+    if (formSubmitRes.ok) {
+      return NextResponse.json(
+        {
+          success: true,
+          message: "Thank you for reaching out. We have received your message.",
         },
         { status: 200 }
       );
@@ -177,10 +208,12 @@ export async function POST(request) {
 
     return NextResponse.json(
       {
-        success: true,
-        message: "Thank you for reaching out. We have received your message.",
+        success: false,
+        error:
+          formSubmitData.message ||
+          "Could not deliver email. Please check your recipient email or SMTP settings.",
       },
-      { status: 200 }
+      { status: 502 }
     );
   } catch (error) {
     console.error("Contact Form API Error:", error);
