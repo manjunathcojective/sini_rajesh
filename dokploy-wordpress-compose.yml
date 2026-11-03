@@ -24,6 +24,12 @@ services:
       WORDPRESS_DB_USER: wp_user
       WORDPRESS_DB_PASSWORD: my_secure_user_password_2026
       WORDPRESS_DB_NAME: wordpress
+    command: >
+      bash -c "echo 'upload_max_filesize = 512M' > /usr/local/etc/php/conf.d/uploads.ini &&
+               echo 'post_max_size = 512M' >> /usr/local/etc/php/conf.d/uploads.ini &&
+               echo 'memory_limit = 512M' >> /usr/local/etc/php/conf.d/uploads.ini &&
+               echo 'max_execution_time = 300' >> /usr/local/etc/php/conf.d/uploads.ini &&
+               apache2-foreground"
     volumes:
       - wp_data:/var/www/html
 

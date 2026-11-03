@@ -45,6 +45,23 @@ export async function fetchGraphQL(query, { variables } = {}) {
 }
 
 /**
+ * Ensure all WordPress media URLs load over same-origin HTTPS to prevent Mixed Content blocking
+ */
+function sanitizeWordPressUrl(url = "") {
+  if (!url) return url;
+  return url
+    .replace(/^https?:\/\/[^\/]+\/wp-content\//i, "/wp-content/")
+    .replace(/^https?:\/\/[^\/]+\/wp-includes\//i, "/wp-includes/");
+}
+
+function sanitizeContentHtml(html = "") {
+  if (!html) return html;
+  return html
+    .replace(/https?:\/\/[^\/"'\s]+\/wp-content\//gi, "/wp-content/")
+    .replace(/https?:\/\/[^\/"'\s]+\/wp-includes\//gi, "/wp-includes/");
+}
+
+/**
  * Calculate reading time from text content
  */
 function calculateReadingTime(text = "") {
@@ -107,7 +124,9 @@ export async function getBlogPosts(first = 20) {
       excerpt: cleanExcerpt || "Click to read this reflection and thought leadership piece.",
       date: post.date,
       readingTime: calculateReadingTime(post.content || post.excerpt || ""),
-      featuredImage: post.featuredImage?.node?.sourceUrl || "/images/my-philosophy-image.png",
+      featuredImage: sanitizeWordPressUrl(
+        post.featuredImage?.node?.sourceUrl || "/images/my-philosophy-image.png"
+      ),
       altText: post.featuredImage?.node?.altText || post.title,
       category: post.categories?.nodes?.[0]?.name || "Reflection",
       author: post.author?.node?.name || "Dr. Sini Rajesh",
@@ -235,12 +254,14 @@ export async function getBlogPostBySlug(slug) {
     title: post.title,
     heroTitle: post.heroTitle || post.title,
     slug: post.slug,
-    content: post.content,
+    content: sanitizeContentHtml(post.content),
     excerpt: cleanExcerpt,
     heroInfo,
     date: post.date,
     readingTime: calculateReadingTime(post.content || ""),
-    featuredImage: post.featuredImage?.node?.sourceUrl || null,
+    featuredImage: sanitizeWordPressUrl(
+      post.featuredImage?.node?.sourceUrl || null
+    ),
     altText: post.featuredImage?.node?.altText || post.title,
     category: post.categories?.nodes?.[0]?.name || "Reflection",
     author: post.author?.node?.name ? `By ${post.author.node.name}` : "By Dr. Sini Rajesh",
