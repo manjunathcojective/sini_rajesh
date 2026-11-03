@@ -1,6 +1,3 @@
-# Docker Compose for WordPress on Dokploy (Hostinger VPS)
-# Use this in Dokploy under "Compose" -> "Create Compose"
-
 version: '3.8'
 
 services:
@@ -8,35 +5,28 @@ services:
     image: mariadb:10.11
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: change_this_strong_root_password_123
+      MYSQL_ROOT_PASSWORD: my_secure_root_password_2026
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wp_user
-      MYSQL_PASSWORD: change_this_strong_user_password_123
+      MYSQL_PASSWORD: my_secure_user_password_2026
     volumes:
       - wp_db_data:/var/lib/mysql
-    networks:
-      - dokploy-network
 
   wordpress:
     image: wordpress:php8.2-apache
     restart: always
+    ports:
+      - "8080:80"
     depends_on:
       - db
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_USER: wp_user
-      WORDPRESS_DB_PASSWORD: change_this_strong_user_password_123
+      WORDPRESS_DB_PASSWORD: my_secure_user_password_2026
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - wp_data:/var/www/html
-    networks:
-      - dokploy-network
 
 volumes:
   wp_db_data:
   wp_data:
-
-networks:
-  dokploy-network:
-    external: true
-

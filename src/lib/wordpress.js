@@ -2,7 +2,7 @@ const GRAPHQL_ENDPOINT =
   process.env.WORDPRESS_GRAPHQL_ENDPOINT ||
   (process.env.NEXT_PUBLIC_WORDPRESS_URL
     ? `${process.env.NEXT_PUBLIC_WORDPRESS_URL}/graphql`
-    : null);
+    : "http://209.50.240.218:8080/graphql");
 
 /**
  * Generic GraphQL fetcher for WordPress
