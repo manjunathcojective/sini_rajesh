@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
@@ -49,6 +50,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   margin: 0;
@@ -58,6 +63,31 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================================================= */
+/* CORMORANT GARAMOND 700 ITALIC TYPOGRAPHY SPECIFICATION                   */
+/* ========================================================================= */
+.cormorant-hero-heading {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+  font-size: 52.86px;
+  line-height: 100% !important;
+  letter-spacing: 0% !important;
+}
+
+@media (max-width: 1023px) {
+  .cormorant-hero-heading {
+    font-size: clamp(32px, 4.5vw, 45px);
+  }
+}
+
+@media (max-width: 767px) {
+  .cormorant-hero-heading {
+    font-size: clamp(28px, 9.6vw, 42px);
+    line-height: 108% !important;
+  }
 }
 
 /* ========================================================================= */

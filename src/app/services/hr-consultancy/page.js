@@ -128,7 +128,7 @@ export default function HRConsultancyPage() {
               <div>
                 <Button
                   id="hr-consultancy-know-more-btn"
-                  href="/contact"
+                  href="#hr-consultancy-details-section"
                   ariaLabel="Know More"
                   variant="primary"
                   size="md"
@@ -191,7 +191,7 @@ export default function HRConsultancyPage() {
             <div>
               <Button
                 id="hr-consultancy-know-more-btn-mobile"
-                href="/contact"
+                href="#hr-consultancy-details-section"
                 ariaLabel="Know More"
                 variant="primary"
                 size="md"
@@ -232,7 +232,7 @@ export default function HRConsultancyPage() {
                   aria-hidden="true"
                 />
                 <span className="font-serif font-bold italic text-[clamp(17px,1.2vw+12px,20px)] leading-none text-[#D07578] whitespace-nowrap">
-                  Let’s Connect
+                  Explore Solutions
                 </span>
               </div>
 

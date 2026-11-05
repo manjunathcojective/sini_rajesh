@@ -167,23 +167,48 @@ export default function InspirationQuote() {
           />
         </motion.figure>
 
-        {/* Centered Fluid Quote Block — Fixed 5-line layout scaling smoothly with clamps */}
+        {/* Centered Quote Block:
+            - Desktop 1440: width 1016px, height 116px, font-size 41.62px, line-height 45px
+            - Tablet 768:   width 656px,  height 203px, font-size 36.56px, line-height 45px
+            - Mobile 370:   width 370px,  height 108px, font-size 20px,    line-height 100%
+            - Fluid scaling between Tablet (768px) and Desktop (1440px)
+        */}
         <motion.blockquote
           id="quote-text"
           initial={{ opacity: 0, y: 16, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center font-serif italic font-bold select-text pointer-events-auto z-10 flex flex-col items-center justify-center w-[90%] text-[clamp(13px,2.5vw+4px,41.62px)] leading-[clamp(17px,3vw+5px,45px)] text-[#141414] tracking-normal"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center font-serif italic font-bold select-text pointer-events-auto z-10 flex flex-col items-center justify-center 
+            /* Width & Max-width */
+            max-md:w-[min(370px,92%)] max-md:max-w-[370px]
+            md:w-[clamp(656px,53.57vw+244.6px,1016px)] md:max-w-[1016px]
+            xl:w-[1016px]
+            /* Height */
+            max-md:min-h-[108px]
+            md:min-h-[203px]
+            xl:min-h-[116px]
+            /* Typography: Font size */
+            max-md:text-[clamp(16px,4.5vw,20px)]
+            md:text-[clamp(36.56px,0.75vw+30.78px,41.62px)]
+            xl:!text-[41.62px]
+            /* Typography: Line height */
+            max-md:leading-[105%]
+            md:leading-[45px]
+            xl:!leading-[45px]
+            text-[#141414] tracking-[0%] opacity-100"
           style={{
-            fontFamily: 'var(--font-serif), "Cormorant Garamond", Georgia, serif',
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontWeight: 700,
+            fontStyle: "italic",
+            letterSpacing: "0%",
+            textAlign: "center",
+            opacity: 1,
           }}
         >
-          <span className="block whitespace-nowrap">“Through The TEA of Your Life, coaching,</span>
-          <span className="block whitespace-nowrap">mentoring, leadership development, and</span>
-          <span className="block whitespace-nowrap">organisation development interventions, I help</span>
-          <span className="block whitespace-nowrap">turn potential into purposeful action and</span>
-          <span className="block whitespace-nowrap">sustainable growth.”</span>
+          <p className="m-0 font-serif font-bold italic text-center [text-wrap:balance]">
+            “Through The TEA of Your Life, coaching, mentoring, leadership development, and organisation development interventions, I help turn potential into purposeful action and sustainable growth.”
+          </p>
         </motion.blockquote>
 
         {/* Lower Photo (Bottom-Right) — Attached to Lower-Right Ellipse Rim */}

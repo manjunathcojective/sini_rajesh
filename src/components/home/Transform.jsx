@@ -9,6 +9,7 @@ const TRANSFORM_CARDS = [
   {
     id: "transform-card-yourself",
     title: "Transform Yourself",
+    href: "/services/coaching",
     image: "/images/transform-image-test.png",
     alt: "Transform Yourself",
     tags: "Coaching | Mentoring | The TEA of Your Life",
@@ -19,6 +20,7 @@ const TRANSFORM_CARDS = [
   {
     id: "transform-card-leadership",
     title: "Transform Your Leadership",
+    href: "/services/mentoring",
     image: "/images/transform-your-leadership.png",
     alt: "Transform Your Leadership",
     tags: "Leadership Development | Growth Mindset | Mentoring",
@@ -29,6 +31,7 @@ const TRANSFORM_CARDS = [
   {
     id: "transform-card-organization",
     title: "Transform Your Organisation",
+    href: "/services/organisational-diagnostic-study",
     image: "/images/transform-your-organization.png",
     alt: "Transform Your Organisation",
     tags: "Organisation Development | HR Consulting | People & Culture",
@@ -174,7 +177,7 @@ export default function Transform() {
 
                     {/* Accessible Full-Card Clickable Link */}
                     <Link
-                      href="/services/organisational-diagnostic-study"
+                      href={card.href || "/services"}
                       aria-label={`Explore services for ${card.title}`}
                       className="absolute inset-0 z-20 focus:outline-none focus:ring-2 focus:ring-[#D07578] focus:ring-offset-2"
                     />
@@ -192,7 +195,7 @@ export default function Transform() {
             >
               <Button
                 id="transform-explore-btn"
-                href="/services/organisational-diagnostic-study"
+                href="/services"
                 ariaLabel="Explore Services"
                 className="w-[172px] h-[44px] justify-center shadow-sm hover:shadow-[0_8px_20px_rgba(208,117,120,0.35)] transition-all duration-300"
               >

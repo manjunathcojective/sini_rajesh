@@ -141,7 +141,7 @@ export default function MentoringPage() {
               <div>
                 <Button
                   id="mentoring-know-more-btn"
-                  href="/contact"
+                  href="#mentoring-details-section"
                   ariaLabel="Know More"
                   variant="primary"
                   size="md"
@@ -209,7 +209,7 @@ export default function MentoringPage() {
             <div>
               <Button
                 id="mentoring-know-more-btn-mobile"
-                href="/contact"
+                href="#mentoring-details-section"
                 ariaLabel="Know More"
                 variant="primary"
                 size="md"
@@ -251,7 +251,7 @@ export default function MentoringPage() {
                   aria-hidden="true"
                 />
                 <span className="font-serif font-bold italic text-[clamp(17px,1.2vw+12px,20px)] leading-none text-[#D07578] whitespace-nowrap">
-                  Let’s Connect
+                  Find Your Direction
                 </span>
               </div>
 
@@ -346,9 +346,8 @@ export default function MentoringPage() {
                             return (
                               <div
                                 key={pIdx}
-                                className={`w-full max-w-[580px] flex items-start gap-[10px] px-[6px] ${
-                                  isLast ? "pb-0 border-b-0" : "pb-[8px] border-b border-[#f0d2d3]"
-                                } opacity-100 rotate-0`}
+                                className={`w-full max-w-[580px] flex items-start gap-[10px] px-[6px] ${isLast ? "pb-0 border-b-0" : "pb-[8px] border-b border-[#f0d2d3]"
+                                  } opacity-100 rotate-0`}
                               >
                                 <span
                                   className="w-1.5 h-1.5 rounded-full bg-[#141414] shrink-0 mt-[6px]"

@@ -74,8 +74,8 @@ function BlogCardItem({ post, index }) {
           href={`/blogs/${post.slug}`}
           variant="primary"
           size="full"
-          showDot={false}
-          className="!w-full !h-[clamp(40px,0.5vw+38px,44px)] !rounded-[6px] !bg-[#D07578] hover:!bg-[#C25F69] text-white font-sans font-medium text-[clamp(14px,0.2vw+13px,16px)] flex items-center justify-center transition-colors shrink-0"
+          showDot={true}
+          className="!w-full !h-[clamp(40px,0.5vw+38px,44px)] !rounded-[6px] font-sans font-medium text-[clamp(14px,0.2vw+13px,16px)] flex items-center justify-center shrink-0"
           ariaLabel={`Read more about ${post.title}`}
         >
           Read More

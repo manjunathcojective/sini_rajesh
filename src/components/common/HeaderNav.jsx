@@ -73,11 +73,10 @@ export default function HeaderNav({
     <>
       <div
         id="frame3"
-        className={`${styles.headerFrame3} ${
-          isMenuOpen
+        className={`${styles.headerFrame3} ${isMenuOpen
             ? `${styles.headerFrame3Open} max-lg:!absolute max-lg:!top-0 max-lg:!left-0 max-lg:!right-0 max-lg:!w-full max-lg:!bg-[#FEFEFE] max-lg:!z-50`
             : className
-        }`}
+          }`}
       >
         {/* Brand Logo Lockup: Sini Rajesh with Igniting Mindz centered underneath */}
         <Link
@@ -130,11 +129,7 @@ export default function HeaderNav({
               className={`group ${styles.headerNavItem} ${styles.headerNavItemServices} !w-auto !min-w-[96px] !px-2.5 cursor-pointer ${isServices ? styles.headerNavItemActive : ""}`}
             >
               <div className="flex items-center gap-1.5 h-[16px]">
-                <span
-                  className={`${styles.headerNavLabel} select-none`}
-                >
-                  Services
-                </span>
+                <Link href="/services" prefetch={false} onClick={closeMenu} className={`${styles.headerNavLabel} select-none hover:text-[#D07578]`}>Services</Link>
                 <span
                   aria-expanded={isServicesOpen}
                   aria-haspopup="true"
@@ -172,7 +167,8 @@ export default function HeaderNav({
                   transition={{ duration: 0.18, ease: "easeOut" }}
                   className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-[999] min-w-[275px] w-max max-w-[320px]"
                 >
-                  <div className="bg-[#FEFEFE] rounded-[12px] shadow-[0_12px_36px_rgba(20,20,20,0.12)] border border-[#D07578]/25 p-2 overflow-hidden flex flex-col gap-0.5">
+                  <div className="bg-[#FEFEFE] rounded-[12px] shadow-[0_12px_36px_rgba(208,117,120,0.12)] border border-[#D07578]/25 p-2 overflow-hidden flex flex-col gap-0.5">
+                    <Link href="/services" prefetch={false} onClick={() => { setIsServicesOpen(false); closeMenu(); }} className="flex items-center justify-between px-3 py-2 rounded-[8px] text-[14px] font-sans font-semibold text-[#D07578] bg-[#FDF7F2] hover:bg-[#F8EFEA] border-b border-[#D07578]/20 mb-1 transition-all group/all"><span>All Services Overview</span><span className="text-[12px] group-hover/all:translate-x-1 transition-transform">→</span></Link>
                     {SERVICES_LIST.map((service) => (
                       <Link
                         key={service.id}
@@ -318,6 +314,17 @@ export default function HeaderNav({
                     className="overflow-hidden"
                   >
                     <div className="flex flex-col w-full">
+                      <Link
+                        href="/services"
+                        prefetch={false}
+                        onClick={closeMenu}
+                        className={`${styles.mobileDrawerSubItem} ${pathname === "/services" ? styles.mobileDrawerSubItemActive : ""} !text-[#D07578] font-semibold flex items-center justify-between`}
+                      >
+                        <span className={`${styles.mobileDrawerSubText} !text-[#D07578] font-semibold`}>
+                          All Services Overview
+                        </span>
+                        <span className="text-[13px] text-[#D07578] pr-1">→</span>
+                      </Link>
                       {SERVICES_LIST.map((service) => (
                         <Link
                           key={service.id}

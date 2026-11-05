@@ -116,7 +116,7 @@ export default function OrganisationalDiagnosticStudyPage() {
               <div className="pt-2">
                 <Button
                   id="org-dev-know-more-btn"
-                  href="/contact"
+                  href="#organization-development-details-section"
                   ariaLabel="Know More"
                   variant="primary"
                   size="md"
@@ -184,7 +184,7 @@ export default function OrganisationalDiagnosticStudyPage() {
             <div>
               <Button
                 id="org-dev-know-more-btn-mobile"
-                href="/contact"
+                href="#organization-development-details-section"
                 ariaLabel="Know More"
                 variant="primary"
                 size="md"
@@ -227,7 +227,7 @@ export default function OrganisationalDiagnosticStudyPage() {
                   aria-hidden="true"
                 />
                 <span className="font-serif font-bold italic text-[clamp(17px,1.2vw+12px,20px)] leading-none text-[#D07578] whitespace-nowrap">
-                  Let’s Connect
+                  Create Impact
                 </span>
               </div>
 

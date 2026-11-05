@@ -87,7 +87,7 @@ export default function CoachingPage() {
               <div>
                 <Button
                   id="coaching-know-more-btn"
-                  href="/contact"
+                  href="#coaching-details-section"
                   ariaLabel="Know More"
                   variant="primary"
                   size="md"
@@ -155,7 +155,7 @@ export default function CoachingPage() {
             <div>
               <Button
                 id="coaching-know-more-btn-mobile"
-                href="/contact"
+                href="#coaching-details-section"
                 ariaLabel="Know More"
                 variant="primary"
                 size="md"
@@ -183,15 +183,31 @@ export default function CoachingPage() {
           {/* Top Block: width 649px, gap 30px, opacity 1 */}
           <div
             id="coaching-details-header"
-            className="w-full max-w-[649px] mx-auto flex flex-col items-center text-center gap-[30px] opacity-100"
+            className="w-full max-w-[649px] mx-auto flex flex-col items-center text-center gap-[clamp(16px,2.08vw,30px)] opacity-100"
           >
-            {/* Main Heading */}
-            <h2
-              id="coaching-details-heading"
-              className="w-full font-serif font-bold italic text-[clamp(28px,2.2vw+16px,41.62px)] leading-[1.08] lg:leading-[45px] text-[#141414] text-center m-0"
-            >
-              Coaching Options for You
-            </h2>
+            {/* Title & Badge Group */}
+            <div className="flex flex-col items-center gap-[clamp(10px,1vw,14px)] w-full">
+              <div
+                id="coaching-details-badge"
+                className="inline-flex items-center justify-center gap-2.5 h-[clamp(13px,1.2vw,16px)]"
+              >
+                <span
+                  className="w-1.5 h-1.5 rounded-full bg-[#D07578] shrink-0"
+                  aria-hidden="true"
+                />
+                <span className="font-serif font-bold italic text-[clamp(17px,1.2vw+12px,20px)] leading-none text-[#D07578] whitespace-nowrap">
+                  Unlock Your Potential
+                </span>
+              </div>
+
+              {/* Main Heading */}
+              <h2
+                id="coaching-details-heading"
+                className="w-full font-serif font-bold italic text-[clamp(28px,2.2vw+16px,41.62px)] leading-[1.08] lg:leading-[45px] text-[#141414] text-center m-0"
+              >
+                Coaching Options for You
+              </h2>
+            </div>
 
             {/* Description Subtext */}
             <p

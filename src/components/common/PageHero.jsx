@@ -138,8 +138,15 @@ export default function PageHero({
               {/* 2. Page Hero Title */}
               {heroTitle && (
                 <h1
-                  className={`font-serif font-bold italic text-white text-[clamp(28px,2.15vw+21.9px,52.86px)] leading-[1.08] lg:leading-[1.02] tracking-normal m-0 !max-w-full !h-auto ${titleClassName}`}
-                  style={titleStyle}
+                  className={`font-serif font-bold italic text-white cormorant-hero-heading text-[clamp(28px,2.15vw+21.9px,52.86px)] lg:!text-[52.86px] !leading-[100%] !tracking-[0%] m-0 !max-w-full !h-auto ${titleClassName}`}
+                  style={{
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontWeight: 700,
+                    fontStyle: "italic",
+                    lineHeight: "100%",
+                    letterSpacing: "0%",
+                    ...titleStyle,
+                  }}
                 >
                   {typeof heroTitle === "string" && heroTitle.includes("\n")
                     ? heroTitle.split("\n").map((line, i) => (
@@ -232,8 +239,15 @@ export default function PageHero({
                 {/* 2. Page Hero Title (Fluid Clamp: 28px Mobile -> 38.4px Tablet 768px -> 41.3px 901px -> 52.86px Desktop) */}
                 {heroTitle && (
                   <h1
-                    className={`font-serif font-bold italic text-white text-[clamp(28px,2.15vw+21.9px,52.86px)] leading-[1.08] lg:leading-[1.02] tracking-normal m-0 !max-w-full !h-auto ${titleClassName}`}
-                    style={titleStyle}
+                    className={`font-serif font-bold italic text-white cormorant-hero-heading text-[clamp(28px,2.15vw+21.9px,52.86px)] lg:!text-[52.86px] !leading-[100%] !tracking-[0%] m-0 !max-w-full !h-auto ${titleClassName}`}
+                    style={{
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontWeight: 700,
+                      fontStyle: "italic",
+                      lineHeight: "100%",
+                      letterSpacing: "0%",
+                      ...titleStyle,
+                    }}
                   >
                     {typeof heroTitle === "string" && heroTitle.includes("\n")
                       ? heroTitle.split("\n").map((line, i) => (

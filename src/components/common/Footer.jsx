@@ -6,8 +6,8 @@ import Link from "next/link";
 
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services/organisational-diagnostic-study" },
+  { label: "My Story", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "Blogs", href: "/blogs" },
   { label: "Contact Us", href: "/contact" },
 ];
@@ -97,7 +97,7 @@ export default function Footer() {
               </h3>
               <div className="flex flex-col gap-2 font-sans font-normal text-[14px] text-white/90 leading-[135%]">
                 <div>
-                  ABC Address ,<br />
+                  Igniting Mindz,<br />
                   Bengaluru, Karnataka
                 </div>
                 <a href="tel:+918951698013" className="hover:text-white transition-colors mt-0.5">
@@ -165,7 +165,7 @@ export default function Footer() {
             </h3>
             <div className="flex flex-col gap-2.5 font-sans font-normal text-[15px] text-white/90 leading-[135%]">
               <div>
-                ABC Address ,<br />
+                Igniting Mindz,<br />
                 Bengaluru, Karnataka
               </div>
               <a href="tel:+918951698013" className="hover:text-white transition-colors mt-0.5">
@@ -251,7 +251,7 @@ export default function Footer() {
               </h3>
               <div className="flex flex-col gap-3 font-sans font-normal text-[15px] text-white/90 leading-[135%]">
                 <div>
-                  ABC Address ,<br />
+                  Igniting Mindz,<br />
                   Bengaluru, Karnataka
                 </div>
                 <a href="tel:+918951698013" className="hover:text-white transition-colors mt-0.5">
@@ -309,11 +309,11 @@ export default function Footer() {
           {/* Mobile Layout: 3 centered lines */}
           <div className="flex md:hidden flex-col items-center gap-2 text-center text-[13px] text-white/85">
             <div>
-              <Link href="#privacy" className="hover:text-white transition-colors">
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
               <span className="mx-2 text-white/40">|</span>
-              <Link href="#terms" className="hover:text-white transition-colors">
+              <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
                 Terms and Conditions
               </Link>
             </div>
@@ -332,11 +332,11 @@ export default function Footer() {
                 © Sini Rajesh <span className="mx-1.5 text-white/40">|</span> All Rights Reserved
               </div>
               <div>
-                <Link href="#privacy" className="hover:text-white transition-colors">
+                <Link href="/privacy-policy" className="hover:text-white transition-colors">
                   Privacy Policy
                 </Link>
                 <span className="mx-2.5 text-white/40">|</span>
-                <Link href="#terms" className="hover:text-white transition-colors">
+                <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
                   Terms and Conditions
                 </Link>
               </div>
@@ -355,11 +355,11 @@ export default function Footer() {
               Her Story, Designed &amp; Coded by Cojective
             </div>
             <div>
-              <Link href="#privacy" className="hover:text-white transition-colors">
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
               <span className="mx-2.5 text-white/40">|</span>
-              <Link href="#terms" className="hover:text-white transition-colors">
+              <Link href="/terms-and-conditions" className="hover:text-white transition-colors">
                 Terms and Conditions
               </Link>
             </div>

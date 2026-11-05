@@ -106,11 +106,7 @@ export default function Navbar({
                     className={`${styles.navItem} !w-auto !min-w-[96px] !px-2.5 ${isActive ? styles.navItemActive : ""}`}
                   >
                     <div className="flex items-center gap-1.5">
-                      <span
-                        className={`${styles.navLabel} select-none`}
-                      >
-                        {link.label}
-                      </span>
+                      <Link href="/services" onClick={closeMobileMenu} className={`${styles.navLabel} select-none hover:text-[#D07578]`}>{link.label}</Link>
                       <button
                         type="button"
                         onClick={(e) => {
@@ -145,7 +141,8 @@ export default function Navbar({
                         transition={{ duration: 0.18, ease: "easeOut" }}
                         className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-[999] min-w-[275px] w-max max-w-[320px]"
                       >
-                        <div className="bg-[#FEFEFE] rounded-[12px] shadow-[0_12px_36px_rgba(20,20,20,0.12)] border border-[#D07578]/25 p-2 overflow-hidden flex flex-col gap-0.5">
+                        <div className="bg-[#FEFEFE] rounded-[12px] shadow-[0_12px_36px_rgba(208,117,120,0.12)] border border-[#D07578]/25 p-2 overflow-hidden flex flex-col gap-0.5">
+                          <Link href="/services" onClick={() => { setIsServicesOpen(false); closeMobileMenu(); }} className="flex items-center justify-between px-3 py-2 rounded-[8px] text-[14px] font-sans font-semibold text-[#D07578] bg-[#FDF7F2] hover:bg-[#F8EFEA] border-b border-[#D07578]/20 mb-1 transition-all group/all"><span>All Services Overview</span><span className="text-[12px] group-hover/all:translate-x-1 transition-transform">→</span></Link>
                           {SERVICES_LIST.map((service) => (
                             <Link
                               key={service.id}
@@ -239,6 +236,14 @@ export default function Navbar({
 
                   {isMobileServicesOpen && (
                     <div className="flex flex-col pl-3 pb-3 gap-1">
+                      <Link
+                        href="/services"
+                        onClick={closeMobileMenu}
+                        className="py-2 px-3 text-[15px] font-sans font-semibold text-[#D07578] bg-white/10 hover:bg-white/15 rounded-[6px] transition-colors flex items-center justify-between border-b border-[#D07578]/30 mb-1"
+                      >
+                        <span>All Services Overview</span>
+                        <span className="text-[#D07578] text-sm">→</span>
+                      </Link>
                       {SERVICES_LIST.map((service) => (
                         <Link
                           key={service.id}

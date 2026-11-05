@@ -121,10 +121,17 @@ export default function Hero() {
         {/* Main Heading */}
         <h1
           id="hero-heading"
-          className="z-20 font-serif font-bold italic text-white m-0 
-            lg:absolute lg:left-[clamp(24px,3.8%,53px)] lg:top-[clamp(330px,32vw,456px)] lg:max-w-[clamp(340px,35%,494px)] lg:text-[clamp(28px,3.67vw,52.86px)] lg:leading-[105%] 
-            md:max-lg:absolute md:max-lg:left-[clamp(30px,5vw,50px)] md:max-lg:top-[clamp(480px,56.5vw,568px)] md:max-lg:max-w-[clamp(320px,43vw,427px)] md:max-lg:text-[clamp(32px,4.5vw,45px)] md:max-lg:leading-[105%] 
-            max-md:relative max-md:mt-[clamp(8px,2.5vw,16px)] max-md:px-[clamp(16px,5vw,36px)] max-md:w-full max-md:max-w-full max-md:text-[clamp(28px,9.6vw,46px)] max-md:leading-[116%] max-md:tracking-[0%]"
+          className="z-20 font-serif font-bold italic text-white m-0 cormorant-hero-heading
+            lg:absolute lg:left-[clamp(24px,3.8%,53px)] lg:top-[clamp(330px,32vw,456px)] lg:max-w-[clamp(340px,35%,494px)] lg:!text-[52.86px] lg:!leading-[100%] lg:!tracking-[0%]
+            md:max-lg:absolute md:max-lg:left-[clamp(30px,5vw,50px)] md:max-lg:top-[clamp(480px,56.5vw,568px)] md:max-lg:max-w-[clamp(320px,43vw,427px)] md:max-lg:text-[clamp(32px,4.5vw,45px)] md:max-lg:leading-[100%] md:max-lg:tracking-[0%]
+            max-md:relative max-md:mt-[clamp(8px,2.5vw,16px)] max-md:px-[clamp(16px,5vw,36px)] max-md:w-full max-md:max-w-full max-md:text-[clamp(28px,9.6vw,42px)] max-md:leading-[108%] max-md:tracking-[0%]"
+          style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontWeight: 700,
+            fontStyle: "italic",
+            lineHeight: "100%",
+            letterSpacing: "0%",
+          }}
         >
           <span className="max-md:block max-md:whitespace-nowrap">Transform from Within, </span>
           <span className="max-md:block max-md:whitespace-nowrap">Grow with Clarity, </span>
