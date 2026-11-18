@@ -60,7 +60,7 @@ export default async function SingleBlogPage({ params }) {
         height="clamp(220px, 18.61vw, 268px)"
         cardClassName="!h-[clamp(220px,18.61vw,268px)] !min-h-[clamp(220px,18.61vw,268px)]"
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 24%"
         leftBlockClassName="!max-w-full lg:!max-w-[950px] xl:!max-w-[1050px]"
         titleClassName="!max-w-full"

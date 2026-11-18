@@ -14,7 +14,7 @@ export default function PageHero({
   infoPosition = "right", // "right" | "below"
   tags = [],
   rightContent = null,
-  bgImage = "/images/bg.png",
+  bgImage = "/images/bg.webp",
   bgPosition = "center 30%", // Shifting default Y from 50% to 30% moves the background image down inside the frame
   bgStyle = {},
   bgImageStyle = {},
@@ -70,7 +70,7 @@ export default function PageHero({
         style={bgStyle}
       >
         <Image
-          src={bgImage || "/images/bg.png"}
+          src={bgImage || "/images/bg.webp"}
           alt="Hero Background"
           fill
           priority

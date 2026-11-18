@@ -107,7 +107,7 @@ export default function AlwaysCurious() {
 
           {/* Desktop & Laptop (lg+): Approved original portrait version */}
           <Image
-            src="/images/always-curious.png"
+            src="/images/always-curious.webp"
             alt="Always Curious - Dr. Sini Rajesh"
             fill
             className="hidden lg:block object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"

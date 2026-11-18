@@ -31,7 +31,7 @@ export default function MyPurpose() {
         />
         {/* Desktop Background Image (>= 1024px) */}
         <Image
-          src="/images/my-purpose.png"
+          src="/images/my-purpose.webp"
           alt="My Purpose - Dr. Sini Rajesh"
           fill
           className="hidden lg:block object-cover object-center"

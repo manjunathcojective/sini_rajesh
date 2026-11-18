@@ -88,7 +88,7 @@ export default function AboutMe() {
                   className="group/small-img relative w-[60px] h-[60px] rounded-[2px] overflow-hidden shrink-0 cursor-pointer shadow-sm hover:shadow-md transition-shadow duration-500"
                 >
                   <Image
-                    src="/images/about-image-small.png"
+                    src="/images/about-image-small.webp"
                     alt="Dr. Sini Rajesh"
                     fill
                     className="object-cover transition-transform duration-500 ease-out group-hover/small-img:scale-110"
@@ -153,7 +153,7 @@ export default function AboutMe() {
             className="relative w-full lg:flex-[45] lg:max-w-[45%] h-full min-h-[460px] lg:min-h-[500px] rounded-[6px] overflow-hidden shrink-0"
           >
             <Image
-              src="/images/about-image-large.png"
+              src="/images/about-image-large.webp"
               alt="About Dr. Sini Rajesh"
               fill
               priority
@@ -200,7 +200,7 @@ export default function AboutMe() {
             className="relative w-full rounded-[12px] overflow-hidden aspect-[1.336/1]"
           >
             <Image
-              src="/images/about-image-large.png"
+              src="/images/about-image-large.webp"
               alt="About Dr. Sini Rajesh"
               fill
               priority
@@ -215,7 +215,7 @@ export default function AboutMe() {
           <div className="flex items-center w-full gap-3.5 pb-3 border-b border-[#141414]/25">
             <div className="group/small-img relative w-[54px] h-[54px] sm:w-[60px] sm:h-[60px] rounded-[2px] overflow-hidden shrink-0 shadow-sm">
               <Image
-                src="/images/about-image-small.png"
+                src="/images/about-image-small.webp"
                 alt="Dr. Sini Rajesh"
                 fill
                 className="object-cover"

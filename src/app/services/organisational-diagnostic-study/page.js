@@ -15,14 +15,14 @@ const OD_INTERVENTION_CARDS = [
     title: "Organisational Diagnostic Study",
     description:
       "A comprehensive assessment of the organisation to understand its current state, identify opportunities for development, and recommend areas for strengthening and growth. The diagnostic may cover organisation structure, leadership, HR, employee practices, communication, culture, systems and processes, statutory compliance, and other relevant organisational areas.",
-    image: "/images/org-dev-card-1.png",
+    image: "/images/org-dev-card-1.webp",
   },
   {
     number: "02",
     title: "Employee Lifecycle & People Practices",
     description:
       "Reviewing the complete employee lifecycle—from recruitment through separation and recommending, designing or strengthening HR systems, processes and people practices where required.",
-    image: "/images/org-dev-card-2.png",
+    image: "/images/org-dev-card-2.webp",
   },
   {
     number: "03",
@@ -36,14 +36,14 @@ const OD_INTERVENTION_CARDS = [
         .
       </>
     ),
-    image: "/images/org-dev-card-3.png",
+    image: "/images/org-dev-card-3.webp",
   },
   {
     number: "04",
     title: "HR Processes & Procedures",
     description:
       "Strengthening HR processes and procedures through thoughtful review, practical recommendations, appropriate design and ongoing professional guidance.",
-    image: "/images/org-dev-card-4.png",
+    image: "/images/org-dev-card-4.webp",
   },
 ];
 
@@ -76,7 +76,7 @@ export default function OrganisationalDiagnosticStudyPage() {
         height="clamp(220px, 18.61vw, 268px)"
         cardClassName="!h-[clamp(220px,18.61vw,268px)] !min-h-[clamp(220px,18.61vw,268px)]"
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 24%"
       />
 
@@ -141,7 +141,7 @@ export default function OrganisationalDiagnosticStudyPage() {
             className="w-[clamp(380px,37.5vw,540px)] h-full relative rounded-[20px] overflow-hidden bg-[#ECE8E1] flex-shrink-0 group/photo"
           >
             <img
-              src="/images/organization-development.png"
+              src="/images/organization-development.webp"
               alt="Organization Development"
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
             />
@@ -168,7 +168,7 @@ export default function OrganisationalDiagnosticStudyPage() {
             className="w-full rounded-[16px] md:rounded-[20px] overflow-hidden bg-[#ECE8E1] relative aspect-[3.85/4.39] md:aspect-[6.68/5] group/photo"
           >
             <img
-              src="/images/organization-development.png"
+              src="/images/organization-development.webp"
               alt="Organization Development"
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
             />

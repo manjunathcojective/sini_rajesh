@@ -15,42 +15,42 @@ const HR_INTERVENTION_CARDS = [
     title: "HR Function Review & Streamlining",
     description:
       "Reviewing the existing HR function, identifying gaps and recommending changes to improve its structure, practices and effectiveness.",
-    image: "/images/hr-card-1.png",
+    image: "/images/hr-card-1.webp",
   },
   {
     number: "02",
     title: "HR Department Structure & Restructuring",
     description:
       "Reviewing the existing HR department structure and recommending an appropriate structure aligned with the organisation's requirements and stage of growth. This may include roles, responsibilities and functional priorities.",
-    image: "/images/hr-card-2.png",
+    image: "/images/hr-card-2.webp",
   },
   {
     number: "03",
     title: "Setting Up the HR Department",
     description:
       "Providing guidance to organisations establishing their Human Resources function, including its structure, roles, responsibilities, processes and priorities.",
-    image: "/images/hr-card-3.png",
+    image: "/images/hr-card-3.webp",
   },
   {
     number: "04",
     title: "HR Advisory & Guidance",
     description:
       "Providing professional guidance and handholding to the HR Head and HR team on HR practices, processes and procedures.",
-    image: "/images/hr-card-4.png",
+    image: "/images/hr-card-4.webp",
   },
   {
     number: "05",
     title: "HR Manual Development",
     description:
       "Developing an organisation-specific HR Manual covering relevant HR policies, processes and guidelines.",
-    image: "/images/hr-card-5.png",
+    image: "/images/hr-card-5.webp",
   },
   {
     number: "06",
     title: "HR Policy Development & Review",
     description:
       "Developing new HR policies or reviewing and recommending changes to existing policies based on the organisation's requirements.",
-    image: "/images/hr-card-6.png",
+    image: "/images/hr-card-6.webp",
   },
 ];
 
@@ -84,7 +84,7 @@ export default function HRConsultancyPage() {
         height="clamp(220px, 18.61vw, 268px)"
         cardClassName="!h-[clamp(220px,18.61vw,268px)] !min-h-[clamp(220px,18.61vw,268px)]"
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 24%"
       />
 
@@ -146,7 +146,7 @@ export default function HRConsultancyPage() {
             className="w-[clamp(380px,37.5vw,540px)] h-full relative rounded-[20px] overflow-hidden bg-[#ECE8E1] flex-shrink-0 group/photo"
           >
             <img
-              src="/images/hr-consultancy.png"
+              src="/images/hr-consultancy.webp"
               alt="HR Consultancy"
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
             />
@@ -171,7 +171,7 @@ export default function HRConsultancyPage() {
             className="w-full rounded-[16px] md:rounded-[20px] overflow-hidden bg-[#ECE8E1] relative aspect-[3.85/4.39] md:aspect-[6.68/5] group/photo"
           >
             <img
-              src="/images/hr-consultancy.png"
+              src="/images/hr-consultancy.webp"
               alt="HR Consultancy"
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
             />

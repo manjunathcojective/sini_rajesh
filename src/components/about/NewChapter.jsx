@@ -14,7 +14,7 @@ export default function NewChapter() {
     >
       {/* Edge-to-Edge Full-Bleed Background Image */}
       <Image
-        src="/images/new-chapter.png"
+        src="/images/new-chapter.webp"
         alt="A New Chapter - Igniting Mindz"
         fill
         priority

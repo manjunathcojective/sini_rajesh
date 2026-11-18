@@ -13,7 +13,7 @@ export const BLOG_POSTS = {
     "category": "Mindset",
     "date": "2026-03-24",
     "readingTime": "4 min read",
-    "featuredImage": "/images/blog1.png",
+    "featuredImage": "/images/blog1.webp",
     "author": "By Dr. Sini Rajesh",
     "elements": [
       {
@@ -168,7 +168,7 @@ export const BLOG_POSTS = {
     "category": "Leadership",
     "date": "2026-03-10",
     "readingTime": "5 min read",
-    "featuredImage": "/images/blog2.png",
+    "featuredImage": "/images/blog2.webp",
     "author": "By Dr. Sini Rajesh",
     "elements": [
       {
@@ -424,7 +424,7 @@ export const BLOG_POSTS = {
     "category": "Mindset",
     "date": "2026-03-02",
     "readingTime": "5 min read",
-    "featuredImage": "/images/blog3.png",
+    "featuredImage": "/images/blog3.webp",
     "author": "By Dr. Sini Rajesh",
     "elements": [
       {
@@ -632,7 +632,7 @@ export const BLOG_POSTS = {
     "category": "Personal Growth",
     "date": "2026-02-24",
     "readingTime": "4 min read",
-    "featuredImage": "/images/portrait.png",
+    "featuredImage": "/images/portrait.webp",
     "author": "By Dr. Sini Rajesh",
     "elements": [
       {
@@ -825,7 +825,7 @@ export const BLOG_POSTS = {
     "category": "Leadership",
     "date": "2026-02-18",
     "readingTime": "5 min read",
-    "featuredImage": "/images/starting-out.png",
+    "featuredImage": "/images/starting-out.webp",
     "author": "By Dr. Sini Rajesh",
     "elements": [
       {
@@ -1053,7 +1053,7 @@ export const BLOG_POSTS = {
     "category": "Workplace Happiness",
     "date": "2026-02-10",
     "readingTime": "5 min read",
-    "featuredImage": "/images/my-story-my-journey.png",
+    "featuredImage": "/images/my-story-my-journey.webp",
     "author": "By Dr. Sini Rajesh",
     "elements": [
       {
@@ -1313,7 +1313,7 @@ export const BLOG_LIST = [
     category: "Mindset",
     date: "2026-03-24",
     readingTime: "4 min read",
-    featuredImage: "/images/blog1.png",
+    featuredImage: "/images/blog1.webp",
     author: "Dr. Sini Rajesh",
   },
   {
@@ -1326,7 +1326,7 @@ export const BLOG_LIST = [
     category: "Leadership",
     date: "2026-03-10",
     readingTime: "5 min read",
-    featuredImage: "/images/blog2.png",
+    featuredImage: "/images/blog2.webp",
     author: "Dr. Sini Rajesh",
   },
   {
@@ -1339,7 +1339,7 @@ export const BLOG_LIST = [
     category: "Mindset",
     date: "2026-03-02",
     readingTime: "5 min read",
-    featuredImage: "/images/blog3.png",
+    featuredImage: "/images/blog3.webp",
     author: "Dr. Sini Rajesh",
   },
   {
@@ -1352,7 +1352,7 @@ export const BLOG_LIST = [
     category: "Personal Growth",
     date: "2026-02-24",
     readingTime: "4 min read",
-    featuredImage: "/images/portrait.png",
+    featuredImage: "/images/portrait.webp",
     author: "Dr. Sini Rajesh",
   },
   {
@@ -1365,7 +1365,7 @@ export const BLOG_LIST = [
     category: "Leadership",
     date: "2026-02-18",
     readingTime: "5 min read",
-    featuredImage: "/images/starting-out.png",
+    featuredImage: "/images/starting-out.webp",
     author: "Dr. Sini Rajesh",
   },
   {
@@ -1378,7 +1378,7 @@ export const BLOG_LIST = [
     category: "Workplace Happiness",
     date: "2026-02-10",
     readingTime: "5 min read",
-    featuredImage: "/images/my-story-my-journey.png",
+    featuredImage: "/images/my-story-my-journey.webp",
     author: "Dr. Sini Rajesh",
   },
 ];

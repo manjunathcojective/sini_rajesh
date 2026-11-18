@@ -24,7 +24,7 @@ const MENTORING_INTERVENTION_CARDS = [
       "Gain new perspectives and strengthen your capabilities",
       "Translate insights and aspirations into meaningful action",
     ],
-    image: "/images/mentoring -card-1.png",
+    image: "/images/mentoring -card-1.webp",
   },
   {
     number: "02",
@@ -41,7 +41,7 @@ const MENTORING_INTERVENTION_CARDS = [
     ],
     pointsTitle: "",
     points: [],
-    image: "/images/mentoring -card-2.png",
+    image: "/images/mentoring -card-2.webp",
   },
   {
     number: "03",
@@ -66,7 +66,7 @@ const MENTORING_INTERVENTION_CARDS = [
         text: " navigating challenges or seeking greater clarity, personal growth and self-mastery",
       },
     ],
-    image: "/images/mentoring -card-3.png",
+    image: "/images/mentoring -card-3.webp",
   },
 ];
 
@@ -100,7 +100,7 @@ export default function MentoringPage() {
         height="clamp(220px, 18.61vw, 268px)"
         cardClassName="!h-[clamp(220px,18.61vw,268px)] !min-h-[clamp(220px,18.61vw,268px)]"
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 24%"
       />
 
@@ -169,7 +169,7 @@ export default function MentoringPage() {
             className="w-[clamp(360px,37.5vw,540px)] min-h-[395px] self-stretch relative rounded-[24px] overflow-hidden bg-[#ECE8E1] flex-shrink-0 opacity-100 rotate-0 shadow-sm group/photo"
           >
             <img
-              src="/images/mentoring.png"
+              src="/images/mentoring.webp"
               alt="Mentoring"
               className="w-full h-full object-cover rounded-[24px] opacity-100 rotate-0 transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
               style={{ objectPosition: "center 14%" }}
@@ -195,7 +195,7 @@ export default function MentoringPage() {
             className="w-full rounded-[20px] md:rounded-[24px] overflow-hidden bg-[#ECE8E1] relative aspect-[540/395] group/photo"
           >
             <img
-              src="/images/mentoring.png"
+              src="/images/mentoring.webp"
               alt="Mentoring"
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
               style={{ objectPosition: "center 14%" }}

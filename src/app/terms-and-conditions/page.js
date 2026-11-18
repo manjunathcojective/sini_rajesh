@@ -20,7 +20,7 @@ export default function TermsAndConditionsPage() {
         height="clamp(220px, 18.61vw, 268px)"
         cardClassName="!h-[clamp(220px,18.61vw,268px)] !min-h-[clamp(220px,18.61vw,268px)]"
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 24%"
       />
 

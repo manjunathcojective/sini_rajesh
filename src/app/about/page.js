@@ -36,7 +36,7 @@ export default function AboutPage() {
         info={storyHeroInfo}
         indent="7ch"
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 20%"
       />
 

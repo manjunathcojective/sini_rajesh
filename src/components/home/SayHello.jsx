@@ -280,7 +280,7 @@ export default function SayHello({
             }`}
           >
             <Image
-              src="/images/say-hello.png"
+              src="/images/say-hello.webp"
               alt="Say Hello"
               fill
               priority

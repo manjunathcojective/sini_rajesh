@@ -23,7 +23,7 @@ export const metadata = {
     title: "Services | Dr. Sini Rajesh - Igniting Mindz",
     description:
       "Tailored pathways to clarity, leadership, and organizational impact through coaching, mentoring, HR consultancy, and systemic diagnostics.",
-    images: ["/images/organization-development.png"],
+    images: ["/images/organization-development.webp"],
   },
 };
 
@@ -40,7 +40,7 @@ export default function ServicesPage() {
         info={servicesHeroInfo}
         indent={false}
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 20%"
       />
 

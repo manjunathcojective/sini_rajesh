@@ -52,7 +52,7 @@ export default function MyJourney() {
             className="group relative w-full lg:w-[520px] aspect-[1336/1000] lg:aspect-auto h-auto lg:h-full lg:min-h-[556px] lg:self-stretch rounded-[12px] overflow-hidden shrink-0 shadow-[0_8px_30px_rgba(0,0,0,0.04)] my-1 sm:my-2 lg:my-0 lg:col-start-2 lg:row-start-1 lg:row-span-2"
           >
             <Image
-              src="/images/my-story-my-journey.png"
+              src="/images/my-story-my-journey.webp"
               alt="My Story - My Journey"
               fill
               priority

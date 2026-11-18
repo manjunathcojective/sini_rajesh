@@ -15,7 +15,7 @@ export default function HowCanIHelp() {
         {/* Desktop Background Image (1201px+) */}
         <div className="hidden lg:block absolute inset-0 w-full h-full">
           <Image
-            src="/images/how-can-i-help-bg.png"
+            src="/images/how-can-i-help-bg.webp"
             alt="How Can I Help Background"
             fill
             priority

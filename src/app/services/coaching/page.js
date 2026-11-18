@@ -40,7 +40,7 @@ export default function CoachingPage() {
         height="clamp(220px, 18.61vw, 268px)"
         cardClassName="!h-[clamp(220px,18.61vw,268px)] !min-h-[clamp(220px,18.61vw,268px)]"
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 24%"
       />
 
@@ -109,7 +109,7 @@ export default function CoachingPage() {
             className="w-[clamp(380px,37.5vw,540px)] h-full relative rounded-[20px] overflow-hidden bg-[#ECE8E1] flex-shrink-0 group/photo"
           >
             <img
-              src="/images/coaching.png"
+              src="/images/coaching.webp"
               alt="Coaching"
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
             />
@@ -136,7 +136,7 @@ export default function CoachingPage() {
             className="w-full rounded-[16px] md:rounded-[20px] overflow-hidden bg-[#ECE8E1] relative aspect-[3.85/4.39] md:aspect-[6.68/5] group/photo"
           >
             <img
-              src="/images/coaching.png"
+              src="/images/coaching.webp"
               alt="Coaching"
               className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
             />
@@ -300,7 +300,7 @@ export default function CoachingPage() {
                 className="w-[591px] h-[452px] rounded-[12px] overflow-hidden bg-[#ECE8E1] flex-shrink-0 relative shadow-sm group/photo"
               >
                 <img
-                  src="/images/one-on-one.png"
+                  src="/images/one-on-one.webp"
                   alt="1-on-1 Coaching"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
                 />
@@ -331,7 +331,7 @@ export default function CoachingPage() {
                 className="w-full rounded-[12px] md:rounded-[16px] overflow-hidden bg-[#ECE8E1] relative aspect-[3.85/3] md:aspect-[6.68/4.52] shadow-sm group/photo"
               >
                 <img
-                  src="/images/one-on-one.png"
+                  src="/images/one-on-one.webp"
                   alt="1-on-1 Coaching"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
                 />
@@ -392,7 +392,7 @@ export default function CoachingPage() {
                 className="w-[clamp(360px,44vw,571px)] xl:w-[571px] h-[clamp(320px,30vw,400px)] lg:h-[400px] rounded-[12px] overflow-hidden bg-[#ECE8E1] flex-shrink-0 relative shadow-sm group/photo"
               >
                 <img
-                  src="/images/group-coaching.png"
+                  src="/images/group-coaching.webp"
                   alt="Group Coaching"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
                 />
@@ -450,7 +450,7 @@ export default function CoachingPage() {
                 className="w-full rounded-[12px] md:rounded-[16px] overflow-hidden bg-[#ECE8E1] relative aspect-[3.85/3] md:aspect-[6.68/4] shadow-sm group/photo"
               >
                 <img
-                  src="/images/group-coaching.png"
+                  src="/images/group-coaching.webp"
                   alt="Group Coaching"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105 hover:scale-105"
                 />

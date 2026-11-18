@@ -38,9 +38,9 @@ export const metadata = {
   ],
   authors: [{ name: "Dr. Sini Rajesh" }],
   icons: {
-    icon: "/images/portrait.png",
-    shortcut: "/images/portrait.png",
-    apple: "/images/portrait.png",
+    icon: "/images/portrait.webp",
+    shortcut: "/images/portrait.webp",
+    apple: "/images/portrait.webp",
   },
 };
 

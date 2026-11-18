@@ -125,7 +125,7 @@ export async function getBlogPosts(first = 20) {
       date: post.date,
       readingTime: calculateReadingTime(post.content || post.excerpt || ""),
       featuredImage: sanitizeWordPressUrl(
-        post.featuredImage?.node?.sourceUrl || "/images/my-philosophy-image.png"
+        post.featuredImage?.node?.sourceUrl || "/images/my-philosophy-image.webp"
       ),
       altText: post.featuredImage?.node?.altText || post.title,
       category: post.categories?.nodes?.[0]?.name || "Reflection",

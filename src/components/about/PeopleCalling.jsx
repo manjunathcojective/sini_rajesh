@@ -28,7 +28,7 @@ export default function PeopleCalling() {
             className="group relative w-full lg:w-[480px] lg:min-w-[420px] xl:w-[480px] aspect-[1332/1000] lg:aspect-auto h-auto lg:h-auto lg:min-h-[552px] lg:self-stretch overflow-hidden shrink-0"
           >
             <Image
-              src="/images/people-calling.png"
+              src="/images/people-calling.webp"
               alt="People Calling"
               fill
               priority

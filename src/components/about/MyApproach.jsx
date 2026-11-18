@@ -38,7 +38,7 @@ export default function MyApproach() {
           "
         >
           <Image
-            src="/images/my-approach.png"
+            src="/images/my-approach.webp"
             alt="My Approach - Dr. Sini Rajesh"
             fill
             className="
@@ -103,7 +103,7 @@ export default function MyApproach() {
             "
           >
             <Image
-              src="/images/my-approach.png"
+              src="/images/my-approach.webp"
               alt="My Approach - Dr. Sini Rajesh"
               fill
               className="

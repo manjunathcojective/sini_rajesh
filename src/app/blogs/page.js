@@ -26,7 +26,7 @@ export default async function BlogsPage() {
         info={blogHeroInfo}
         indent={false}
         bgColor="bg-[#BA676A]"
-        bgImage="/images/hero-bg-image.png"
+        bgImage="/images/hero-bg-image.webp"
         bgPosition="center 20%"
       />
 

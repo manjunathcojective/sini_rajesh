@@ -168,7 +168,7 @@ export default function ContactHero({
           className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden"
         >
           <Image
-            src="/images/bg.png"
+            src="/images/bg.webp"
             alt="Hero Background"
             fill
             priority

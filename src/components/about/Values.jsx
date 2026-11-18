@@ -113,7 +113,7 @@ export default function Values() {
             "
           >
             <Image
-              src="/images/values.png"
+              src="/images/values.webp"
               alt="Values that Guide Me - Dr. Sini Rajesh"
               fill
               className="
@@ -171,7 +171,7 @@ export default function Values() {
           "
         >
           <Image
-            src="/images/values.png"
+            src="/images/values.webp"
             alt="Values that Guide Me - Dr. Sini Rajesh"
             fill
             className="

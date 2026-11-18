@@ -18,7 +18,7 @@ export default function VisionMission() {
         className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none"
       >
         <Image
-          src="/images/vision-mission.png"
+          src="/images/vision-mission.webp"
           alt="Vision & Mission - Dr. Sini Rajesh"
           fill
           className="object-cover object-center"

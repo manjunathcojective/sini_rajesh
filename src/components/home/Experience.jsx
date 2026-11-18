@@ -85,7 +85,7 @@ export default function Experience() {
               >
                 <div className="relative w-full h-full overflow-hidden rounded-[12px]">
                   <Image
-                    src="/images/experience_and_credibility.png"
+                    src="/images/experience_and_credibility.webp"
                     alt="Experience and Credibility"
                     fill
                     priority
@@ -186,7 +186,7 @@ export default function Experience() {
             className="hidden lg:block group/photo relative overflow-hidden shrink-0 cursor-pointer lg:flex-[44] lg:max-w-[44%] lg:min-h-[667px] rounded-[12px] opacity-100 shadow-sm hover:shadow-[0_20px_40px_-15px_rgba(208,117,120,0.25)] transition-all duration-700"
           >
             <Image
-              src="/images/experience_and_credibility.png"
+              src="/images/experience_and_credibility.webp"
               alt="Experience and Credibility"
               fill
               priority

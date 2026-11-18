@@ -87,7 +87,7 @@ export default function BlogGrid({
                     aria-label={post.title}
                   >
                     <Image
-                      src={post.featuredImage || "/images/portrait.png"}
+                      src={post.featuredImage || "/images/portrait.webp"}
                       alt={post.title}
                       fill
                       priority={index === 0}

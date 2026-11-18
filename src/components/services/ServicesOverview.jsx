@@ -15,7 +15,7 @@ export const SERVICES = [
     tagline: "Culture & Leadership",
     description:
       "Comprehensive diagnostic studies to uncover underlying dynamics, align human systems, and drive lasting cultural change.",
-    image: "/images/organization-development-card.png",
+    image: "/images/organization-development-card.webp",
     href: "/services/organisational-diagnostic-study",
     buttonLabel: "Explore Organisation Development",
   },
@@ -34,7 +34,7 @@ export const SERVICES = [
         framework to unlock clarity and purpose.
       </>
     ),
-    image: "/images/coaching-card.png",
+    image: "/images/coaching-card.webp",
     href: "/services/coaching",
     buttonLabel: "Explore Coaching",
   },
@@ -46,7 +46,7 @@ export const SERVICES = [
     tagline: "People Architecture",
     description:
       "Strategic people practices, department structuring, policy architectures, and hands-on guidance for sustainable scaling.",
-    image: "/images/hr-consultancy-card.png",
+    image: "/images/hr-consultancy-card.webp",
     href: "/services/hr-consultancy",
     buttonLabel: "Explore HR Consultancy",
   },
@@ -58,7 +58,7 @@ export const SERVICES = [
     tagline: "Workplace & Personal",
     description:
       "Fostering happiness as a strategic advantage—helping individuals and teams thrive, build resilience, and discover joy.",
-    image: "/images/happiness-coaching-card.png",
+    image: "/images/happiness-coaching-card.webp",
     href: "/services/happiness-coaching",
     buttonLabel: "Explore Happiness Coaching",
   },
@@ -70,7 +70,7 @@ export const SERVICES = [
     tagline: "Career & Leadership",
     description:
       "Executive advisory, career mentorship, and leadership sounding board grounded in nearly three decades of experience.",
-    image: "/images/mentoring-card.png",
+    image: "/images/mentoring-card.webp",
     href: "/services/mentoring",
     buttonLabel: "Explore Mentoring",
   },

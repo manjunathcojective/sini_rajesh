@@ -44,7 +44,7 @@ export default function Hero() {
           className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden"
         >
           <Image
-            src="/images/bg.png"
+            src="/images/bg.webp"
             alt="Hero Background"
             width={1440}
             height={1013}
@@ -62,7 +62,7 @@ export default function Hero() {
           className="hidden lg:block absolute z-5 pointer-events-none select-none bottom-[clamp(16px,1.8vw,28px)] left-[clamp(280px,30.2%,423px)] w-[clamp(370px,37.8%,529px)] h-[clamp(460px,46.6vw,653px)] transition-all duration-700 ease-out"
         >
           <Image
-            src="/images/portrait.png"
+            src="/images/portrait.webp"
             alt="Dr. Sini Rajesh"
             width={529}
             height={653}
@@ -78,7 +78,7 @@ export default function Hero() {
           className="hidden md:max-lg:block absolute z-5 pointer-events-none select-none top-[clamp(140px,20vw,200px)] left-1/2 -translate-x-1/2 w-[clamp(560px,78vw,760px)] h-[clamp(720px,95vw,946px)] transition-all duration-700 ease-out"
         >
           <Image
-            src="/images/tablet-portrait.png"
+            src="/images/tablet-portrait.webp"
             alt="Dr. Sini Rajesh"
             width={760}
             height={946}
@@ -94,7 +94,7 @@ export default function Hero() {
           className="block md:hidden absolute z-5 pointer-events-none select-none top-[clamp(95px,28vw,165px)] left-1/2 -translate-x-1/2 w-[clamp(425px,133vw,1000px)] h-[clamp(638px,200vw,1500px)]"
         >
           <Image
-            src="/images/Hero-Portrait-Mobile.png"
+            src="/images/Hero-Portrait-Mobile.webp"
             alt="Dr. Sini Rajesh"
             width={700}
             height={1050}

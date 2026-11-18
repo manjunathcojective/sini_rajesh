@@ -28,7 +28,7 @@ function BlogCardItem({ post, index }) {
           aria-label={post.title}
         >
           <Image
-            src={post.featuredImage || "/images/starting-out.png"}
+            src={post.featuredImage || "/images/starting-out.webp"}
             alt={post.title}
             fill
             className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"

@@ -65,13 +65,13 @@ export const quoteContent = {
     "“Through The TEA of Your Life, coaching, mentoring, leadership development, and organisation development interventions, I help turn potential into purposeful action and sustainable growth.”",
   photos: {
     photo1: {
-      src: "/assets/quote-photo-1.png",
+      src: "/assets/quote-photo-1.webp",
       alt: "Dr. Sini Rajesh seated on a chair, smiling confidently",
       width: 150,
       height: 150,
     },
     photo2: {
-      src: "/assets/quote-photo-2.png",
+      src: "/assets/quote-photo-2.webp",
       alt: "Dr. Sini Rajesh smiling with hand on chin in leadership pose",
       width: 150,
       height: 150,
@@ -81,9 +81,9 @@ export const quoteContent = {
     title: "Trusted By",
     clientCount: "100k+ Clients",
     avatars: [
-      { id: "avatar-1", src: "/assets/avatar-1.png", alt: "Client 1" },
-      { id: "avatar-2", src: "/assets/avatar-2.png", alt: "Client 2" },
-      { id: "avatar-3", src: "/assets/avatar-3.png", alt: "Client 3" },
+      { id: "avatar-1", src: "/assets/avatar-1.webp", alt: "Client 1" },
+      { id: "avatar-2", src: "/assets/avatar-2.webp", alt: "Client 2" },
+      { id: "avatar-3", src: "/assets/avatar-3.webp", alt: "Client 3" },
     ],
   },
 };

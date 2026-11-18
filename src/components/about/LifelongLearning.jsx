@@ -48,7 +48,7 @@ export default function LifelongLearning() {
             "
           >
             <Image
-              src="/images/lifelong-learning.png"
+              src="/images/lifelong-learning.webp"
               alt="Lifelong Learning - Dr. Sini Rajesh"
               fill
               className="
@@ -110,7 +110,7 @@ export default function LifelongLearning() {
               "
             >
               <Image
-                src="/images/lifelong-learning.png"
+                src="/images/lifelong-learning.webp"
                 alt="Lifelong Learning - Dr. Sini Rajesh"
                 fill
                 className="

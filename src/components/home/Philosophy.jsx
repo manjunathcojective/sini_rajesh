@@ -33,7 +33,7 @@ export default function Philosophy() {
             className="relative w-full h-full min-h-[380px] rounded-[12px] overflow-hidden"
           >
             <Image
-              src="/images/my-philosophy-image.png"
+              src="/images/my-philosophy-image.webp"
               alt="My Philosophy"
               fill
               priority
@@ -142,7 +142,7 @@ export default function Philosophy() {
             className="relative w-full rounded-[12px] overflow-hidden aspect-[1.57786885/1] md:aspect-[1.59047619/1]"
           >
             <Image
-              src="/images/my-philosophy-image.png"
+              src="/images/my-philosophy-image.webp"
               alt="My Philosophy"
               fill
               priority

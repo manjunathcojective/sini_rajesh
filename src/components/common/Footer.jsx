@@ -13,9 +13,9 @@ const QUICK_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { id: "linkedin", icon: "/images/linkedin-icon.png", alt: "LinkedIn", href: "http://www.linkedin.com/in/sini-rajesh" },
-  { id: "facebook", icon: "/images/fb-icon.png", alt: "Facebook", href: "https://www.facebook.com/share/1A6RGC7PUn/" },
-  { id: "instagram", icon: "/images/instagram-icon.png", alt: "Instagram", href: "https://instagram.com" },
+  { id: "linkedin", icon: "/images/linkedin-icon.webp", alt: "LinkedIn", href: "http://www.linkedin.com/in/sini-rajesh" },
+  { id: "facebook", icon: "/images/fb-icon.webp", alt: "Facebook", href: "https://www.facebook.com/share/1A6RGC7PUn/" },
+  { id: "instagram", icon: "/images/instagram-icon.webp", alt: "Instagram", href: "https://instagram.com" },
 ];
 
 function InformationItems({ className = "", isMobile = false }) {
@@ -96,7 +96,7 @@ export default function Footer() {
       {/* Background Graphic & Warm Gradient Overlay matching Figma */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
         <Image
-          src="/images/hero-bg-image.png"
+          src="/images/hero-bg-image.webp"
           alt="Footer Background"
           fill
           priority

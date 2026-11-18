@@ -82,7 +82,7 @@ export default function StartingOut() {
             "
           >
             <Image
-              src="/images/starting-out.png"
+              src="/images/starting-out.webp"
               alt="Starting Out - Dr. Sini Rajesh"
               fill
               className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
@@ -189,7 +189,7 @@ export default function StartingOut() {
           "
         >
           <Image
-            src="/images/starting-out.png"
+            src="/images/starting-out.webp"
             alt="Starting Out - Dr. Sini Rajesh"
             fill
             className="object-cover object-[left_48%] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
