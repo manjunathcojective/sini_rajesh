@@ -17,27 +17,31 @@ export default function Philosophy() {
         className="w-full max-w-[1240px] flex flex-col gap-[clamp(28px,3.8vw,56px)]"
       >
         {/* ========================================================================= */}
-        {/* 1. DESKTOP TOP ROW (>= 1024px): 2 Columns with Image matching Text Height */}
+        {/* 1. DESKTOP TOP ROW (>= 1024px): 2 Columns with Exact 621x394 Layout      */}
         {/* ========================================================================= */}
         <div
           id="philosophy-top-row"
           className="hidden lg:grid grid-cols-2 xl:grid-cols-[621px_1fr] gap-8 xl:gap-14 items-stretch w-full"
         >
-          {/* Visual Image: Matches exact height of the text column beside it */}
+          {/* Visual Image: Width 621px, Height adjusted with beside layout, Radius 12px */}
           <motion.div
             id="philosophy-hero-image"
             initial={{ opacity: 0, scale: 0.96, y: 20 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full h-full min-h-[380px] rounded-[12px] overflow-hidden"
+            className="relative w-full xl:w-[621px] h-full min-h-[394px] max-w-full rounded-[12px] overflow-hidden opacity-100 rotate-0 shrink-0"
           >
             <Image
               src="/images/my-philosophy-image.webp"
               alt="My Philosophy"
               fill
               priority
-              className="object-cover object-[80%_center] transition-transform duration-700 hover:scale-105"
+              className="object-cover transition-transform duration-700 hover:scale-[1.28]"
+              style={{
+                transform: "scale(1.24) translate(38px, -23px)",
+                transformOrigin: "center center",
+              }}
               sizes="(max-width: 1279px) 50vw, 621px"
             />
           </motion.div>
