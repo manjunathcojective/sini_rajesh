@@ -27,8 +27,15 @@ const OD_INTERVENTION_CARDS = [
   {
     number: "03",
     title: "Leadership & People Manager Development",
-    description:
-      "Coaching and mentoring management teams, leadership teams and people managers to strengthen self-awareness, leadership effectiveness and the way they lead and engage their people, primarily guided by the principles of my signature framework, The TEA of Your Life.",
+    description: (
+      <>
+        Coaching and mentoring management teams, leadership teams and people managers to strengthen self-awareness, leadership effectiveness and the way they lead and engage their people, primarily guided by the principles of my signature framework,{" "}
+        <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+          The TEA of Your Life
+        </strong>
+        .
+      </>
+    ),
     image: "/images/org-dev-card-3.png",
   },
   {

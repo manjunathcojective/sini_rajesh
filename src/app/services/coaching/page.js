@@ -76,7 +76,11 @@ export default function CoachingPage() {
               {/* Paragraphs Area (Manrope, 400, 16px, line-height 100%/readable, rgba(20,20,20,0.75)) */}
               <div className="flex flex-col gap-2.5 font-sans font-normal text-[clamp(14px,0.2vw+12.8px,15.5px)] leading-[1.42] text-[rgba(20,20,20,0.75)]">
                 <p className="m-0">
-                  Through coaching, I ignite minds to discover what is possible, develop the confidence and capability to pursue it, and create transformation that makes a meaningful difference. My coaching approach is guided by my signature framework, The TEA of Your Life.
+                  Through coaching, I ignite minds to discover what is possible, develop the confidence and capability to pursue it, and create transformation that makes a meaningful difference. My coaching approach is guided by my signature framework,{" "}
+                  <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+                    The TEA of Your Life
+                  </strong>
+                  .
                 </p>
                 <p className="m-0">
                   I offer both 1-on-1 Coaching and Group Coaching, based on individual preferences and needs.
@@ -145,7 +149,11 @@ export default function CoachingPage() {
           >
             <div className="flex flex-col gap-3 font-sans font-normal text-[clamp(14.5px,0.5vw+12px,16px)] leading-[1.48] text-[rgba(20,20,20,0.75)]">
               <p className="m-0">
-                Through coaching, I ignite minds to discover what is possible, develop the confidence and capability to pursue it, and create transformation that makes a meaningful difference. My coaching approach is guided by my signature framework, The TEA of Your Life.
+                Through coaching, I ignite minds to discover what is possible, develop the confidence and capability to pursue it, and create transformation that makes a meaningful difference. My coaching approach is guided by my signature framework,{" "}
+                <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+                  The TEA of Your Life
+                </strong>
+                .
               </p>
               <p className="m-0">
                 I offer both 1-on-1 Coaching and Group Coaching, based on individual preferences and needs.

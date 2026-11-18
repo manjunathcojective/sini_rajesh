@@ -26,6 +26,9 @@ export default function HeaderNav({
   const isBlogs = pathname === "/blogs" || pathname?.startsWith("/blogs");
 
   const closeMenu = () => {
+    if (typeof document !== "undefined" && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setIsMenuOpen(false);
     setIsServicesOpen(false);
     setIsMobileServicesOpen(false);
@@ -65,6 +68,9 @@ export default function HeaderNav({
   }, []);
 
   useEffect(() => {
+    if (typeof document !== "undefined" && document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setIsServicesOpen(false);
     setIsMenuOpen(false);
   }, [pathname]);
@@ -242,7 +248,7 @@ export default function HeaderNav({
       {/* Full landing page height white background navigation overlay for Tablet/Mobile */}
       <div
         className={`${styles.mobileDrawerOverlay} ${isMenuOpen ? styles.mobileDrawerOverlayOpen : ""}`}
-        aria-hidden={!isMenuOpen}
+        inert={!isMenuOpen}
       >
         <div className={styles.mobileDrawerContent}>
           <nav className={styles.mobileDrawerNav}>

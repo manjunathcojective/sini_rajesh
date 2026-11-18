@@ -10,12 +10,26 @@ const SERVICES_DATA = [
     id: "coaching",
     title: "Coaching",
     subtitle: "Personal Clarity & High-Performance Executive Coaching",
-    description:
-      "Unlock your authentic voice, dismantle self-limiting patterns, and lead with profound purpose through personalized 1-on-1 coaching grounded in The TEA of Your Life framework.",
+    description: (
+      <>
+        Unlock your authentic voice, dismantle self-limiting patterns, and lead with profound purpose through personalized 1-on-1 coaching grounded in{" "}
+        <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+          The TEA of Your Life
+        </strong>{" "}
+        framework.
+      </>
+    ),
     points: [
       "Executive & Leadership Coaching",
       "Personal Transformation & Growth",
-      "The TEA of Your Life Framework",
+      (
+        <span key="tea-pt">
+          <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+            The TEA of Your Life
+          </strong>{" "}
+          Framework
+        </span>
+      ),
     ],
     badge: "Individual & Leadership",
   },

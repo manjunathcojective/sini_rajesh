@@ -114,8 +114,8 @@ export default function StartingOut() {
                 leading-[140%] m-0
               "
             >
-              I simply started doing what came naturally helping people I knew
-              with their people and organisational challenges. I was happy to
+              I simply started doing what came naturally — helping people I knew,
+              with their organisational and people challenges. I was happy to
               share my experience, offer a different perspective and help
               wherever I could.
             </p>
@@ -160,9 +160,10 @@ export default function StartingOut() {
             {/* Closing italic quote */}
             <p
               className="
-                font-serif font-bold italic text-[#141414]/75
-                text-[clamp(16px,15px+0.17vw,20px)]
-                leading-[120%] m-0 mt-[clamp(4px,0.5vw,8px)]
+                font-serif font-bold italic text-[#141414]
+                text-[18px] xl:text-[20px]
+                leading-[1.4] [-webkit-text-stroke:0.25px_#141414]
+                m-0 mt-[clamp(4px,0.5vw,8px)]
               "
             >
               Sometimes, the path ahead becomes clearer only after you begin

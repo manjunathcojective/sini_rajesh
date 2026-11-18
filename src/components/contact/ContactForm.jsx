@@ -7,12 +7,54 @@ import Button from "@/components/ui/Button";
 const SERVICE_OPTIONS = [
   "Coaching",
   "Organization Development",
-  "Hr Consultancy",
+  "HR Consultancy",
   "Happiness Coaching",
   "Mentoring",
   "Leadership Development",
   "Not Sure Yet, Would like to Explore",
   "Other",
+];
+
+const COUNTRY_CODES = [
+  { code: "IN", name: "India", dialCode: "+91", flag: "🇮🇳" },
+  { code: "AE", name: "UAE", dialCode: "+971", flag: "🇦🇪" },
+  { code: "US", name: "USA", dialCode: "+1", flag: "🇺🇸" },
+  { code: "GB", name: "UK", dialCode: "+44", flag: "🇬🇧" },
+  { code: "SG", name: "Singapore", dialCode: "+65", flag: "🇸🇬" },
+  { code: "AU", name: "Australia", dialCode: "+61", flag: "🇦🇺" },
+  { code: "CA", name: "Canada", dialCode: "+1", flag: "🇨🇦" },
+  { code: "SA", name: "Saudi Arabia", dialCode: "+966", flag: "🇸🇦" },
+  { code: "QA", name: "Qatar", dialCode: "+974", flag: "🇶🇦" },
+  { code: "KW", name: "Kuwait", dialCode: "+965", flag: "🇰🇼" },
+  { code: "OM", name: "Oman", dialCode: "+968", flag: "🇴🇲" },
+  { code: "BH", name: "Bahrain", dialCode: "+973", flag: "🇧🇭" },
+  { code: "MY", name: "Malaysia", dialCode: "+60", flag: "🇲🇾" },
+  { code: "DE", name: "Germany", dialCode: "+49", flag: "🇩🇪" },
+  { code: "FR", name: "France", dialCode: "+33", flag: "🇫🇷" },
+  { code: "CH", name: "Switzerland", dialCode: "+41", flag: "🇨🇭" },
+  { code: "NL", name: "Netherlands", dialCode: "+31", flag: "🇳🇱" },
+  { code: "IE", name: "Ireland", dialCode: "+353", flag: "🇮🇪" },
+  { code: "NZ", name: "New Zealand", dialCode: "+64", flag: "🇳🇿" },
+  { code: "ZA", name: "South Africa", dialCode: "+27", flag: "🇿🇦" },
+  { code: "HK", name: "Hong Kong", dialCode: "+852", flag: "🇭🇰" },
+  { code: "JP", name: "Japan", dialCode: "+81", flag: "🇯🇵" },
+  { code: "LK", name: "Sri Lanka", dialCode: "+94", flag: "🇱🇰" },
+  { code: "NP", name: "Nepal", dialCode: "+977", flag: "🇳🇵" },
+  { code: "BD", name: "Bangladesh", dialCode: "+880", flag: "🇧🇩" },
+  { code: "ID", name: "Indonesia", dialCode: "+62", flag: "🇮🇩" },
+  { code: "TH", name: "Thailand", dialCode: "+66", flag: "🇹🇭" },
+  { code: "PH", name: "Philippines", dialCode: "+63", flag: "🇵🇭" },
+  { code: "VN", name: "Vietnam", dialCode: "+84", flag: "🇻🇳" },
+  { code: "KE", name: "Kenya", dialCode: "+254", flag: "🇰🇪" },
+  { code: "NG", name: "Nigeria", dialCode: "+234", flag: "🇳🇬" },
+  { code: "EG", name: "Egypt", dialCode: "+20", flag: "🇪🇬" },
+  { code: "IT", name: "Italy", dialCode: "+39", flag: "🇮🇹" },
+  { code: "ES", name: "Spain", dialCode: "+34", flag: "🇪🇸" },
+  { code: "SE", name: "Sweden", dialCode: "+46", flag: "🇸🇪" },
+  { code: "NO", name: "Norway", dialCode: "+47", flag: "🇳🇴" },
+  { code: "DK", name: "Denmark", dialCode: "+45", flag: "🇩🇰" },
+  { code: "BR", name: "Brazil", dialCode: "+55", flag: "🇧🇷" },
+  { code: "MX", name: "Mexico", dialCode: "+52", flag: "🇲🇽" },
 ];
 
 // FormSubmit.co Recipient Email / Secure Token
@@ -26,6 +68,7 @@ export default function ContactForm() {
     firstName: "",
     lastName: "",
     email: "",
+    countryCode: "+91",
     phone: "",
     organization: "",
     service: "",
@@ -35,6 +78,73 @@ export default function ContactForm() {
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [alertMessage, setAlertMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
+
+  const selectedCountry =
+    COUNTRY_CODES.find((c) => c.dialCode === formData.countryCode) ||
+    COUNTRY_CODES[0];
+
+  const validateField = (name, value, currentData = formData) => {
+    let error = "";
+    const trimmed = typeof value === "string" ? value.trim() : "";
+
+    switch (name) {
+      case "firstName":
+        if (!trimmed) {
+          error = "First name is required.";
+        } else if (trimmed.length < 2) {
+          error = "First name must be at least 2 characters.";
+        } else if (!/^[a-zA-Z\s.'-]+$/.test(trimmed)) {
+          error = "Please enter letters only.";
+        }
+        break;
+
+      case "lastName":
+        if (!trimmed) {
+          error = "Last name is required.";
+        } else if (!/^[a-zA-Z\s.'-]+$/.test(trimmed)) {
+          error = "Please enter letters only.";
+        }
+        break;
+
+      case "email":
+        if (!trimmed) {
+          error = "Email address is required.";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(trimmed)) {
+          error = "Please enter a valid email address.";
+        }
+        break;
+
+      case "phone":
+        if (trimmed) {
+          const digits = trimmed.replace(/\D/g, "");
+          if (digits.length < 7 || digits.length > 15) {
+            error = "Please enter a valid phone number (7-15 digits).";
+          }
+        }
+        break;
+
+      case "service":
+        if (!trimmed) {
+          error = "Please select what you would like to connect about.";
+        }
+        break;
+
+      case "message":
+        if (!trimmed) {
+          error = "Message is required.";
+        } else if (trimmed.length < 10) {
+          error = "Message must be at least 10 characters.";
+        }
+        break;
+
+      default:
+        break;
+    }
+
+    return error;
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -56,41 +166,40 @@ export default function ContactForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => {
+      const updated = { ...prev, [name]: value };
+      if (errors[name]) {
+        const error = validateField(name, value, updated);
+        setErrors((prevErr) => ({ ...prevErr, [name]: error }));
+      }
+      return updated;
+    });
+  };
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const error = validateField(name, value, formData);
+    setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validations
-    if (!formData.firstName.trim()) {
-      setStatus("error");
-      setAlertMessage("First Name is required.");
-      setShowModal(true);
-      return;
-    }
-    if (!formData.lastName.trim()) {
-      setStatus("error");
-      setAlertMessage("Last Name is required.");
-      setShowModal(true);
-      return;
-    }
-    if (!formData.email.trim() || !formData.email.includes("@")) {
-      setStatus("error");
-      setAlertMessage("Please provide a valid email address.");
-      setShowModal(true);
-      return;
-    }
-    if (!formData.service) {
-      setStatus("error");
-      setAlertMessage("Please select what you would like to connect about.");
-      setShowModal(true);
-      return;
-    }
-    if (!formData.message.trim()) {
-      setStatus("error");
-      setAlertMessage("Please write a short message before sending.");
-      setShowModal(true);
+    // Comprehensive Validations
+    const newErrors = {};
+    const fieldsToValidate = ["firstName", "lastName", "email", "phone", "service", "message"];
+    fieldsToValidate.forEach((field) => {
+      const err = validateField(field, formData[field], formData);
+      if (err) newErrors[field] = err;
+    });
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      const firstErrorField = fieldsToValidate.find((f) => newErrors[f]);
+      if (firstErrorField) {
+        document.getElementById(firstErrorField)?.focus();
+      }
       return;
     }
 
@@ -102,6 +211,10 @@ export default function ContactForm() {
 
       // 1. First attempt: Server API (/api/contact)
       try {
+        const formattedPhone = formData.phone.trim()
+          ? `${formData.countryCode} ${formData.phone.trim()}`
+          : "";
+
         const res = await fetch("/api/contact", {
           method: "POST",
           headers: {
@@ -112,7 +225,7 @@ export default function ContactForm() {
             firstName: formData.firstName.trim(),
             lastName: formData.lastName.trim(),
             email: formData.email.trim(),
-            phone: formData.phone.trim(),
+            phone: formattedPhone,
             organization: formData.organization.trim(),
             service: formData.service,
             message: formData.message.trim(),
@@ -133,21 +246,32 @@ export default function ContactForm() {
       // 2. Client-side Direct Delivery Fallback (bypasses serverless Cloudflare blocking):
       if (!delivered) {
         try {
+          const formattedPhone = formData.phone.trim()
+            ? `${formData.countryCode} ${formData.phone.trim()}`
+            : "Not provided";
+
+          const recipientEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL;
+          const ccEmail = process.env.NEXT_PUBLIC_CONTACT_CC_EMAIL;
+
+          if (!recipientEmail) {
+            throw new Error("Recipient email is not configured in environment variables.");
+          }
+
           const directPayload = {
             name: `${formData.firstName.trim()} ${formData.lastName.trim()}`.trim(),
             email: formData.email.trim(),
-            phone: formData.phone.trim() || "Not provided",
+            phone: formattedPhone,
             organization: formData.organization.trim() || "Not provided",
             service: formData.service || "General Inquiry",
             message: formData.message.trim() || "No message provided",
             _subject: `New Website Inquiry from ${formData.firstName.trim()} ${formData.lastName.trim()}`,
             _template: "table",
             _captcha: "false",
-            _cc: "revathi.cojective@gmail.com",
+            ...(ccEmail ? { _cc: ccEmail } : {}),
           };
 
           const directRes = await fetch(
-            "https://formsubmit.co/ajax/manjunath.cojective@gmail.com",
+            `https://formsubmit.co/ajax/${encodeURIComponent(recipientEmail)}`,
             {
               method: "POST",
               headers: {
@@ -183,10 +307,13 @@ export default function ContactForm() {
           "Thank you for reaching out. Your message has been sent successfully."
         );
         setShowModal(true);
+        setErrors({});
+        setTouched({});
         setFormData({
           firstName: "",
           lastName: "",
           email: "",
+          countryCode: "+91",
           phone: "",
           organization: "",
           service: "",
@@ -394,6 +521,7 @@ export default function ContactForm() {
         <form
           id="contact-form-element"
           onSubmit={handleSubmit}
+          noValidate
           className="w-full flex flex-col items-center gap-[clamp(24px,3vw,36px)]"
         >
           <div
@@ -403,7 +531,7 @@ export default function ContactForm() {
             {/* Row 1: First Name & Last Name (Stacked 1-Col on Mobile & Tablet, 2-Col on Desktop) */}
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(16px,2vw,24px)]">
               {/* First Name */}
-              <div className="flex flex-col gap-[8px] w-full">
+              <div className="flex flex-col gap-[6px] w-full">
                 <label
                   htmlFor="firstName"
                   className="font-sans font-medium text-[clamp(13px,0.2vw+12px,14px)] text-[#141414]"
@@ -414,16 +542,26 @@ export default function ContactForm() {
                   id="firstName"
                   name="firstName"
                   type="text"
-                  required
                   value={formData.firstName}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="eg. Priya"
-                  className="w-full h-[48px] px-4 rounded-[6px] border border-[#D07578]/50 bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
+                  className={`w-full h-[48px] px-4 rounded-[6px] border bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all ${
+                    errors.firstName
+                      ? "border-[#BA4347] focus:border-[#BA4347] focus:ring-2 focus:ring-[#BA4347]/20"
+                      : "border-[#D07578]/50 focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
+                  }`}
                 />
+                {errors.firstName && (
+                  <span className="text-[12.5px] font-sans font-medium text-[#BA4347] flex items-center gap-1">
+                    <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {errors.firstName}
+                  </span>
+                )}
               </div>
 
               {/* Last Name */}
-              <div className="flex flex-col gap-[8px] w-full">
+              <div className="flex flex-col gap-[6px] w-full">
                 <label
                   htmlFor="lastName"
                   className="font-sans font-medium text-[clamp(13px,0.2vw+12px,14px)] text-[#141414]"
@@ -434,19 +572,29 @@ export default function ContactForm() {
                   id="lastName"
                   name="lastName"
                   type="text"
-                  required
                   value={formData.lastName}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="eg. Singh"
-                  className="w-full h-[48px] px-4 rounded-[6px] border border-[#D07578]/50 bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
+                  className={`w-full h-[48px] px-4 rounded-[6px] border bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all ${
+                    errors.lastName
+                      ? "border-[#BA4347] focus:border-[#BA4347] focus:ring-2 focus:ring-[#BA4347]/20"
+                      : "border-[#D07578]/50 focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
+                  }`}
                 />
+                {errors.lastName && (
+                  <span className="text-[12.5px] font-sans font-medium text-[#BA4347] flex items-center gap-1">
+                    <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {errors.lastName}
+                  </span>
+                )}
               </div>
             </div>
 
             {/* Row 2: Email Address & Phone Number (Stacked 1-Col on Mobile & Tablet, 2-Col on Desktop) */}
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(16px,2vw,24px)]">
               {/* Email Address */}
-              <div className="flex flex-col gap-[8px] w-full">
+              <div className="flex flex-col gap-[6px] w-full">
                 <label
                   htmlFor="email"
                   className="font-sans font-medium text-[clamp(13px,0.2vw+12px,14px)] text-[#141414]"
@@ -457,43 +605,121 @@ export default function ContactForm() {
                   id="email"
                   name="email"
                   type="email"
-                  required
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="eg. priyasingh@gmail.com"
-                  className="w-full h-[48px] px-4 rounded-[6px] border border-[#D07578]/50 bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
+                  className={`w-full h-[48px] px-4 rounded-[6px] border bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all ${
+                    errors.email
+                      ? "border-[#BA4347] focus:border-[#BA4347] focus:ring-2 focus:ring-[#BA4347]/20"
+                      : "border-[#D07578]/50 focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
+                  }`}
                 />
+                {errors.email && (
+                  <span className="text-[12.5px] font-sans font-medium text-[#BA4347] flex items-center gap-1">
+                    <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {errors.email}
+                  </span>
+                )}
               </div>
 
               {/* Phone Number */}
-              <div className="flex flex-col gap-[8px] w-full">
+              <div className="flex flex-col gap-[6px] w-full">
                 <label
                   htmlFor="phone"
                   className="font-sans font-medium text-[clamp(13px,0.2vw+12px,14px)] text-[#141414]"
                 >
                   Phone Number
                 </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="eg. 8975486321"
-                  className="w-full h-[48px] px-4 rounded-[6px] border border-[#D07578]/50 bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
-                />
+                <div
+                  className={`flex items-center w-full h-[48px] rounded-[6px] border bg-white transition-all ${
+                    errors.phone
+                      ? "border-[#BA4347] focus-within:border-[#BA4347] focus-within:ring-2 focus-within:ring-[#BA4347]/20"
+                      : "border-[#D07578]/50 focus-within:border-[#D07578] focus-within:ring-2 focus-within:ring-[#D07578]/20"
+                  }`}
+                >
+                  {/* Dynamic Width Country Code Trigger */}
+                  <div className="relative shrink-0 flex items-center h-full hover:bg-[#D07578]/5 transition-colors">
+                    {/* Visual container sized dynamically to the selected country name */}
+                    <div className="flex items-center gap-1.5 pl-3 pr-6 h-full text-[#141414] font-sans text-[14px] sm:text-[15px] pointer-events-none whitespace-nowrap select-none">
+                      <span className="text-[16px] leading-none">{selectedCountry.flag}</span>
+                      <span className="font-medium text-[#141414]">{selectedCountry.dialCode}</span>
+                      <span className="text-[#141414]/70 font-normal">({selectedCountry.name})</span>
+                    </div>
+
+                    {/* Native Select overlaid to handle touch / clicks on all devices */}
+                    <select
+                      id="countryCode"
+                      name="countryCode"
+                      value={formData.countryCode}
+                      onChange={handleChange}
+                      aria-label="Country Code"
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer text-[16px]"
+                    >
+                      {COUNTRY_CODES.map((c) => (
+                        <option
+                          key={c.code}
+                          value={c.dialCode}
+                          className="text-[#141414] bg-white font-sans text-[14px]"
+                        >
+                          {c.flag} {c.dialCode} ({c.name})
+                        </option>
+                      ))}
+                    </select>
+
+                    {/* Dropdown Chevron */}
+                    <div className="absolute right-2 pointer-events-none text-[#141414]/60">
+                      <svg
+                        width="9"
+                        height="9"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  {/* Separator line | between country code and number */}
+                  <div
+                    className="w-[1px] h-6 bg-[#D07578]/40 shrink-0 select-none pointer-events-none"
+                    aria-hidden="true"
+                  />
+
+                  {/* Phone input */}
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="eg. 98765 43210"
+                    className="flex-1 min-w-0 h-full px-3.5 bg-transparent text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none"
+                  />
+                </div>
+                {errors.phone && (
+                  <span className="text-[12.5px] font-sans font-medium text-[#BA4347] flex items-center gap-1">
+                    <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {errors.phone}
+                  </span>
+                )}
               </div>
             </div>
 
             {/* Row 3: Organisation / Company & Service Dropdown (Stacked 1-Col on Mobile & Tablet, 2-Col on Desktop) */}
             <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-[clamp(16px,2vw,24px)]">
               {/* Organisation */}
-              <div className="flex flex-col gap-[8px] w-full">
+              <div className="flex flex-col gap-[6px] w-full">
                 <label
                   htmlFor="organization"
                   className="font-sans font-medium text-[clamp(13px,0.2vw+12px,14px)] text-[#141414]"
                 >
-                  Organisation / Company:
+                  Organisation / Company
                 </label>
                 <input
                   id="organization"
@@ -507,7 +733,7 @@ export default function ContactForm() {
               </div>
 
               {/* Service Dropdown */}
-              <div className="flex flex-col gap-[8px] w-full">
+              <div className="flex flex-col gap-[6px] w-full">
                 <label
                   htmlFor="service"
                   className="font-sans font-medium text-[clamp(13px,0.2vw+12px,14px)] text-[#141414] truncate"
@@ -517,10 +743,14 @@ export default function ContactForm() {
                 <select
                   id="service"
                   name="service"
-                  required
                   value={formData.service}
                   onChange={handleChange}
-                  className="w-full h-[48px] px-4 rounded-[6px] border border-[#D07578]/50 bg-white text-[#141414] font-sans text-[15px] outline-none transition-all focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20 cursor-pointer"
+                  onBlur={handleBlur}
+                  className={`w-full h-[48px] px-4 rounded-[6px] border bg-white text-[#141414] font-sans text-[15px] outline-none transition-all cursor-pointer ${
+                    errors.service
+                      ? "border-[#BA4347] focus:border-[#BA4347] focus:ring-2 focus:ring-[#BA4347]/20"
+                      : "border-[#D07578]/50 focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
+                  }`}
                 >
                   <option value="" disabled>
                     Select an option
@@ -531,11 +761,17 @@ export default function ContactForm() {
                     </option>
                   ))}
                 </select>
+                {errors.service && (
+                  <span className="text-[12.5px] font-sans font-medium text-[#BA4347] flex items-center gap-1">
+                    <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    {errors.service}
+                  </span>
+                )}
               </div>
             </div>
 
             {/* Row 4: Message Textarea */}
-            <div className="flex flex-col gap-[8px] w-full">
+            <div className="flex flex-col gap-[6px] w-full">
               <label
                 htmlFor="message"
                 className="font-sans font-medium text-[clamp(13px,0.2vw+12px,14px)] text-[#141414]"
@@ -545,13 +781,23 @@ export default function ContactForm() {
               <textarea
                 id="message"
                 name="message"
-                required
                 rows={4}
                 value={formData.message}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 placeholder="Tell me more about what you're looking for..."
-                className="w-full min-h-[110px] p-4 rounded-[6px] border border-[#D07578]/50 bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20 resize-y"
+                className={`w-full min-h-[110px] p-4 rounded-[6px] border bg-white text-[#141414] placeholder:text-[#141414]/40 font-sans text-[15px] outline-none transition-all resize-y ${
+                  errors.message
+                    ? "border-[#BA4347] focus:border-[#BA4347] focus:ring-2 focus:ring-[#BA4347]/20"
+                    : "border-[#D07578]/50 focus:border-[#D07578] focus:ring-2 focus:ring-[#D07578]/20"
+                }`}
               />
+              {errors.message && (
+                <span className="text-[12.5px] font-sans font-medium text-[#BA4347] flex items-center gap-1">
+                  <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  {errors.message}
+                </span>
+              )}
             </div>
           </div>
 
@@ -561,10 +807,10 @@ export default function ContactForm() {
             type="submit"
             disabled={status === "loading"}
             variant="primary"
-            className="!w-[200px] !h-[48px] !rounded-[6px] !bg-[#D07578] hover:!bg-[#C25F69] text-white font-sans font-medium text-[16px] flex items-center justify-center transition-colors"
-            ariaLabel="Send Message"
+            className="!w-fit !px-[4ch] !h-[48px] !rounded-[6px] !bg-[#D07578] hover:!bg-[#C25F69] text-white font-sans font-medium text-[16px] flex items-center justify-center transition-colors"
+            ariaLabel="Submit"
           >
-            {status === "loading" ? "Sending..." : "Send Message"}
+            {status === "loading" ? "Submitting..." : "Submit"}
           </Button>
         </form>
       </motion.div>

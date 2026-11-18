@@ -25,8 +25,15 @@ export const SERVICES = [
     title: "Coaching",
     category: "1-on-1 & Group Coaching",
     tagline: "The TEA Framework",
-    description:
-      "Executive and personal transformation coaching grounded in The TEA of Your Life framework to unlock clarity and purpose.",
+    description: (
+      <>
+        Executive and personal transformation coaching grounded in{" "}
+        <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+          The TEA of Your Life
+        </strong>{" "}
+        framework to unlock clarity and purpose.
+      </>
+    ),
     image: "/images/coaching-card.png",
     href: "/services/coaching",
     buttonLabel: "Explore Coaching",

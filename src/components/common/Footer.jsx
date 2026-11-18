@@ -13,10 +13,78 @@ const QUICK_LINKS = [
 ];
 
 const SOCIAL_LINKS = [
-  { id: "facebook", icon: "/images/fb-icon.png", alt: "Facebook", href: "https://www.facebook.com/share/1A6RGC7PUn/" },
   { id: "linkedin", icon: "/images/linkedin-icon.png", alt: "LinkedIn", href: "http://www.linkedin.com/in/sini-rajesh" },
+  { id: "facebook", icon: "/images/fb-icon.png", alt: "Facebook", href: "https://www.facebook.com/share/1A6RGC7PUn/" },
   { id: "instagram", icon: "/images/instagram-icon.png", alt: "Instagram", href: "https://instagram.com" },
 ];
+
+function InformationItems({ className = "", isMobile = false }) {
+  return (
+    <div className={`flex flex-col font-sans font-normal text-white/90 leading-[135%] w-fit min-w-[calc(max-content+2ch)] ${className}`}>
+      {/* Address */}
+      <div className="flex items-start gap-2 whitespace-nowrap">
+        <svg
+          className="w-[1em] h-[1em] shrink-0 mt-[0.2em] text-white/85"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <span>
+          Igniting Mindz,<br />
+          Bengaluru, Karnataka
+        </span>
+      </div>
+
+      {/* Number */}
+      <a
+        href="tel:+918951698013"
+        className="flex items-center gap-2 hover:text-white transition-colors group mt-0.5 whitespace-nowrap"
+      >
+        <svg
+          className="w-[1em] h-[1em] shrink-0 text-white/85 group-hover:text-white transition-colors"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        <span>+91 89516 98013</span>
+      </a>
+
+      {/* Email */}
+      <a
+        href="mailto:connect@sinirajesh.com"
+        className="flex items-center gap-2 hover:text-white transition-colors group whitespace-nowrap"
+      >
+        <svg
+          className="w-[1em] h-[1em] shrink-0 text-white/85 group-hover:text-white transition-colors"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.75"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+        <span>connect@sinirajesh.com</span>
+      </a>
+    </div>
+  );
+}
 
 export default function Footer() {
   return (
@@ -71,9 +139,9 @@ export default function Footer() {
         {/* --- A. MOBILE LAYOUT (< 768px): 2 columns + Follow us below --- */}
         <div className="flex md:hidden flex-col gap-6 w-full">
           {/* Row 1: Quick Links & Information side-by-side */}
-          <div className="grid grid-cols-2 gap-x-6 gap-y-4 w-full">
+          <div className="flex justify-between items-start gap-x-4 gap-y-4 w-full">
             {/* Quick Links Column */}
-            <div className="flex flex-col gap-3.5">
+            <div className="flex flex-col gap-3.5 shrink-0">
               <h3 className="font-serif font-bold italic text-[20px] text-white m-0">
                 Quick Links
               </h3>
@@ -91,22 +159,11 @@ export default function Footer() {
             </div>
 
             {/* Information Column */}
-            <div className="flex flex-col gap-3.5">
+            <div className="flex flex-col gap-3.5 w-fit min-w-[calc(max-content+2ch)] max-w-full">
               <h3 className="font-serif font-bold italic text-[20px] text-white m-0">
                 Information
               </h3>
-              <div className="flex flex-col gap-2 font-sans font-normal text-[14px] text-white/90 leading-[135%]">
-                <div>
-                  Igniting Mindz,<br />
-                  Bengaluru, Karnataka
-                </div>
-                <a href="tel:+918951698013" className="hover:text-white transition-colors mt-0.5">
-                  +91 89516 98013
-                </a>
-                <a href="mailto:connect@sinirajesh.com" className="hover:text-white transition-colors break-all">
-                  connect@sinirajesh.com
-                </a>
-              </div>
+              <InformationItems className="gap-2 text-[14px]" isMobile={true} />
             </div>
           </div>
 
@@ -159,22 +216,11 @@ export default function Footer() {
           </div>
 
           {/* Column 2: Information */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 w-fit min-w-[calc(max-content+2ch)]">
             <h3 className="font-serif font-bold italic text-[22px] text-white m-0">
               Information
             </h3>
-            <div className="flex flex-col gap-2.5 font-sans font-normal text-[15px] text-white/90 leading-[135%]">
-              <div>
-                Igniting Mindz,<br />
-                Bengaluru, Karnataka
-              </div>
-              <a href="tel:+918951698013" className="hover:text-white transition-colors mt-0.5">
-                +91 89516 98013
-              </a>
-              <a href="mailto:connect@sinirajesh.com" className="hover:text-white transition-colors">
-                connect@sinirajesh.com
-              </a>
-            </div>
+            <InformationItems className="gap-2.5 text-[15px]" />
           </div>
 
           {/* Column 3: Follow us */}
@@ -245,22 +291,11 @@ export default function Footer() {
             </div>
 
             {/* Information */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 w-fit min-w-[calc(max-content+2ch)]">
               <h3 className="font-serif font-bold italic text-[22px] text-white m-0">
                 Information
               </h3>
-              <div className="flex flex-col gap-3 font-sans font-normal text-[15px] text-white/90 leading-[135%]">
-                <div>
-                  Igniting Mindz,<br />
-                  Bengaluru, Karnataka
-                </div>
-                <a href="tel:+918951698013" className="hover:text-white transition-colors mt-0.5">
-                  +91 89516 98013
-                </a>
-                <a href="mailto:connect@sinirajesh.com" className="hover:text-white transition-colors">
-                  connect@sinirajesh.com
-                </a>
-              </div>
+              <InformationItems className="gap-3 text-[15px]" />
             </div>
 
             {/* Follow us */}

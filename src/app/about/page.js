@@ -21,7 +21,7 @@ export const metadata = {
   description: "Discover the journey, experience, and story of Dr. Sini Rajesh, Founder of Igniting Mindz.",
 };
 
-const storyHeroInfo = `Hi, I’m Dr. Sini Rajesh, and this is my story: a journey that began as a trainee and, through nearly three decades of learning, exploring, leading and working with people, eventually led me to become the Founder of **Igniting Mindz**.
+const storyHeroInfo = `Hi, I’m Dr. Sini Rajesh, and this is my story: a journey that began as a trainee and through nearly three decades of learning, exploring, leading and working with people, eventually led me to become the Founder of **Igniting Mindz**.
 
 It is a journey shaped by opportunities, experiences, people and, perhaps most importantly, a willingness to keep learning and give new things a try.`;
 

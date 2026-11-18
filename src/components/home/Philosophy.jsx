@@ -85,7 +85,7 @@ export default function Philosophy() {
               <p className="m-0">
                 This philosophy is at the heart of <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">The TEA of Your Life</strong>, my signature approach to personal and professional transformation. It encourages greater self-awareness, helps us recognise what may be holding us back and inspires meaningful change across five dimensions of life: <strong className="font-bold">Health, Relationships, Career &amp; Business, Money &amp; Wealth, and Inner Self.</strong> The goal isn&apos;t to create a perfect life, but to understand ourselves better and take purposeful steps towards who we aspire to become.
               </p>
-              <div className="font-serif font-bold italic text-[20px] leading-[1.4] text-[#141414] m-0 pt-1">
+              <div className="font-serif font-bold italic text-[18px] xl:text-[20px] leading-[1.4] text-[#141414] [-webkit-text-stroke:0.25px_#141414] m-0 pt-1">
                 Sometimes, the biggest shift begins with a simple change in the way we think.
               </div>
             </motion.div>
@@ -159,7 +159,7 @@ export default function Philosophy() {
             <p className="m-0">
               This philosophy is at the heart of <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">The TEA of Your Life</strong>, my signature approach to personal and professional transformation. It encourages greater self-awareness, helps us recognise what may be holding us back and inspires meaningful change across five dimensions of life: <strong className="font-bold">Health, Relationships, Career &amp; Business, Money &amp; Wealth, and Inner Self.</strong> The goal isn&apos;t to create a perfect life, but to understand ourselves better and take purposeful steps towards who we aspire to become.
             </p>
-            <div className="font-serif font-bold italic text-[clamp(17px,1.2vw+14px,20px)] leading-[1.4] text-[#141414] pt-1">
+            <div className="font-serif font-bold italic text-[18px] xl:text-[20px] leading-[1.4] text-[#141414] [-webkit-text-stroke:0.25px_#141414] pt-1">
               Sometimes, the biggest shift begins with a simple change in the way we think.
             </div>
           </div>

@@ -49,7 +49,7 @@ export default function TermsAndConditionsPage() {
               2. Nature of Professional Services
             </h2>
             <p className="font-sans font-normal text-[15px] sm:text-[16px] leading-[1.65] text-[#141414]/80 m-0">
-              The services provided by Dr. Sini Rajesh through Igniting Mindz encompass executive coaching, personal transformation coaching, mentoring, human resources advisory, and organization development diagnostics.
+              The services provided by Dr. Sini Rajesh through Igniting Mindz encompass executive coaching, personal transformation coaching, mentoring, human resources advisory, and organization development.
             </p>
             <div className="p-4 bg-[#FDF7F2] rounded-[8px] border-l-4 border-[#D07578] font-sans text-[14.5px] leading-[1.6] text-[#141414]/85">
               <strong className="font-semibold text-[#141414]">Important Developmental Disclaimer:</strong> Coaching and mentoring are developmental and educational processes aimed at personal clarity, leadership evolution, and professional effectiveness. They do not constitute clinical psychotherapy, psychological counseling, medical treatment, or legal/financial advice. Clients remain solely responsible for their personal decisions, actions, and outcomes.

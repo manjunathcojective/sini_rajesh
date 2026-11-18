@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-// Default recipient email addresses
-const DEFAULT_RECIPIENT_EMAILS = [
-  "manjunath.cojective@gmail.com",
-  "revathi.cojective@gmail.com",
-];
+// Default recipient fallback (strictly driven by environment variables)
+const DEFAULT_RECIPIENT_EMAILS = [];
 
 // Fallback FormSubmit token if SMTP is not configured
 const FORMSUBMIT_TOKEN = "0d301ed05ffe056a530f5320794928cc";
@@ -50,8 +47,22 @@ export async function POST(request) {
         .filter(Boolean)
       : DEFAULT_RECIPIENT_EMAILS;
 
-    const recipientEmail = recipientList.length > 0 ? recipientList.join(", ") : smtpUser;
-    console.log("Contact API -> Resolved recipients:", recipientList);
+    const rawCc =
+      process.env.CONTACT_CC_EMAILS ||
+      process.env.CONTACT_CC_EMAIL ||
+      process.env.CC_EMAILS ||
+      process.env.CC_EMAIL ||
+      "";
+
+    const ccList = rawCc
+      ? rawCc
+        .split(/[,;]+/)
+        .map((e) => e.trim())
+        .filter(Boolean)
+      : [];
+
+    const recipientEmail = recipientList.length > 0 ? recipientList.join(", ") : (smtpUser || "");
+    console.log("Contact API -> Resolved recipients:", recipientList, "CC:", ccList);
 
     // 1. Deliver via Resend (Official Next.js/Vercel Email Delivery)
     const resendApiKey = process.env.RESEND_API_KEY;
@@ -98,10 +109,11 @@ export async function POST(request) {
           </div>
         `;
 
-        // First try delivering to both; if sandbox domain restricts to account owner, fallback to primary
+        // First try delivering to configured recipients
         let resendPayload = {
-          from: "Dr. Sini Rajesh Website <onboarding@resend.dev>",
-          to: ["manjunath.cojective@gmail.com", "revathi.cojective@gmail.com"],
+          from: process.env.RESEND_FROM_EMAIL || "Dr. Sini Rajesh Website <onboarding@resend.dev>",
+          to: recipientList.length > 0 ? recipientList : (recipientEmail ? [recipientEmail] : []),
+          ...(ccList.length > 0 ? { cc: ccList } : {}),
           reply_to: email,
           subject: `New Inquiry from ${fullName} - ${service || "Website Contact"}`,
           html: emailHtml,
@@ -118,8 +130,9 @@ export async function POST(request) {
         });
 
         if (!resendRes.ok) {
-          // Fallback to primary account owner
-          resendPayload.to = ["manjunath.cojective@gmail.com"];
+          // Fallback to primary recipient if batch delivery or CC is restricted
+          resendPayload.to = recipientList.length > 0 ? [recipientList[0]] : [recipientEmail];
+          delete resendPayload.cc;
           resendRes = await fetch("https://api.resend.com/emails", {
             method: "POST",
             headers: {
@@ -207,6 +220,7 @@ export async function POST(request) {
         await transporter.sendMail({
           from: `"${process.env.SMTP_FROM_NAME || "Dr. Sini Rajesh Website"}" <${smtpUser}>`,
           to: recipientEmail,
+          ...(ccList.length > 0 ? { cc: ccList.join(", ") } : {}),
           replyTo: email,
           subject: `New Inquiry from ${fullName} - ${service || "Website Contact"}`,
           html: emailHtml,
@@ -225,13 +239,17 @@ export async function POST(request) {
     }
 
     // 2. Direct Delivery Fallback: Delivers to the configured recipient email(s)
-    const primaryRecipient = recipientList[0] || "manjunath.cojective@gmail.com";
-    const ccList = recipientList.slice(1).filter((e) => e !== primaryRecipient);
-    if (
-      !ccList.includes("revathi.cojective@gmail.com") &&
-      primaryRecipient !== "revathi.cojective@gmail.com"
-    ) {
-      ccList.push("revathi.cojective@gmail.com");
+    const primaryRecipient = recipientList[0] || recipientEmail;
+    const combinedCc = [
+      ...recipientList.slice(1).filter((e) => e !== primaryRecipient),
+      ...ccList.filter((e) => e !== primaryRecipient),
+    ];
+
+    if (!primaryRecipient) {
+      return NextResponse.json(
+        { success: false, error: "Recipient email is not configured in environment variables." },
+        { status: 500 }
+      );
     }
 
     const targetEndpoint = `https://formsubmit.co/ajax/${encodeURIComponent(primaryRecipient)}`;
@@ -248,7 +266,7 @@ export async function POST(request) {
       _subject: `New Inquiry from ${fullName} - Dr. Sini Rajesh Website`,
       _template: "table",
       _captcha: "false",
-      ...(ccList.length > 0 ? { _cc: ccList.join(", ") } : {}),
+      ...(combinedCc.length > 0 ? { _cc: combinedCc.join(", ") } : {}),
     };
 
     console.log("Contact API -> Target endpoint:", targetEndpoint);

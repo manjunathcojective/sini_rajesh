@@ -171,7 +171,7 @@ export default function PageHero({
             ) : heroInfo ? (
               <div
                 id="page-hero-info"
-                className={`w-full min-w-0 max-w-full lg:max-w-[780px] font-sans font-normal not-italic text-white/95 text-[clamp(14px,0.25vw+12.4px,16px)] lg:text-[16px] leading-[1.4] lg:leading-[100%] tracking-[0%] m-0 flex flex-col gap-[clamp(12px,0.5vw+8px,16px)] ${infoClassName}`}
+                className={`w-full min-w-0 max-w-full lg:max-w-[780px] font-sans font-normal not-italic text-white/95 text-[clamp(14px,0.25vw+12.4px,16px)] lg:text-[16px] leading-[1.38] md:leading-[135%] lg:leading-[125%] tracking-[0%] m-0 flex flex-col gap-[clamp(12px,0.5vw+8px,16px)] ${infoClassName}`}
                 style={infoStyle}
               >
                 {typeof heroInfo === "string" ? (
@@ -179,7 +179,7 @@ export default function PageHero({
                     <p
                       key={i}
                       style={i === 0 && indent ? { textIndent: typeof indent === "string" ? indent : "7ch" } : undefined}
-                      className={`font-sans font-normal not-italic text-white/95 text-[clamp(14px,0.25vw+12.4px,16px)] lg:text-[16px] leading-[1.4] lg:leading-[100%] tracking-[0%] m-0 ${
+                      className={`font-sans font-normal not-italic text-white/95 text-[clamp(14px,0.25vw+12.4px,16px)] lg:text-[16px] leading-[1.38] md:leading-[135%] lg:leading-[125%] tracking-[0%] m-0 ${
                         indent ? "first-of-type:indent-[7ch]" : ""
                       }`}
                     >
@@ -272,7 +272,7 @@ export default function PageHero({
               ) : heroInfo ? (
                 <div
                   id="page-hero-info"
-                  className={`w-full min-w-0 max-w-full lg:max-w-[500px] xl:max-w-[560px] flex flex-col gap-[clamp(12px,0.5vw+8px,16px)] font-sans font-normal not-italic text-white/95 text-[clamp(14px,0.25vw+12.4px,16px)] lg:text-[16px] leading-[1.4] lg:leading-[100%] tracking-[0%] m-0 ${infoClassName}`}
+                  className={`w-full min-w-0 max-w-full lg:max-w-[500px] xl:max-w-[560px] flex flex-col gap-[clamp(12px,0.5vw+8px,16px)] font-sans font-normal not-italic text-white/95 text-[clamp(14px,0.25vw+12.4px,16px)] lg:text-[16px] leading-[1.38] md:leading-[135%] lg:leading-[125%] tracking-[0%] m-0 ${infoClassName}`}
                   style={infoStyle}
                 >
                   {typeof heroInfo === "string" ? (
@@ -280,7 +280,7 @@ export default function PageHero({
                       <p
                         key={i}
                         style={i === 0 && indent ? { textIndent: typeof indent === "string" ? indent : "7ch" } : undefined}
-                        className={`font-sans font-normal not-italic text-white/95 text-[clamp(14px,0.25vw+12.4px,16px)] lg:text-[16px] leading-[1.4] lg:leading-[100%] tracking-[0%] m-0 ${
+                        className={`font-sans font-normal not-italic text-white/95 text-[clamp(14px,0.25vw+12.4px,16px)] lg:text-[16px] leading-[1.38] md:leading-[135%] lg:leading-[125%] tracking-[0%] m-0 ${
                           indent ? "first-of-type:indent-[7ch]" : ""
                         }`}
                       >

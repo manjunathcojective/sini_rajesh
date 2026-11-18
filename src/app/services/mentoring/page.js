@@ -31,7 +31,13 @@ const MENTORING_INTERVENTION_CARDS = [
     title: "Why Mentor With Me?",
     description: [
       "My mentoring brings together extensive professional and leadership experience, research into mindset and human behaviour, and a deep understanding of people and business.",
-      "I take the time to listen and understand your aspirations and challenges, share relevant experiences and perspectives, and provide practical guidance and handholding throughout your journey. Guided by my signature framework, The TEA of Your Life, I also help you develop greater awareness of your Thoughts, Emotions and Actions, enabling you to make more conscious choices and move forward with greater clarity and confidence.",
+      <>
+        I take the time to listen and understand your aspirations and challenges, share relevant experiences and perspectives, and provide practical guidance and handholding throughout your journey. Guided by my signature framework,{" "}
+        <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+          The TEA of Your Life
+        </strong>
+        , I also help you develop greater awareness of your Thoughts, Emotions and Actions, enabling you to make more conscious choices and move forward with greater clarity and confidence.
+      </>,
     ],
     pointsTitle: "",
     points: [],
@@ -133,7 +139,11 @@ export default function MentoringPage() {
                   Mentoring is a journey of learning, sharing experiences and discovering new possibilities. Through meaningful conversations, practical insights and personalised guidance, mentoring creates a supportive space to explore aspirations, gain clarity, build confidence and navigate professional and personal growth. It is about drawing on experience and perspectives to empower individuals to make informed choices and move forward with purpose.
                 </p>
                 <p className="w-full max-w-[660px] font-sans font-normal text-[clamp(14.5px,0.25vw+13px,16px)] leading-[1.45] text-[rgba(20,20,20,0.75)] m-0">
-                  Guided by my signature framework, <strong className="font-semibold text-[#141414]">The TEA of Your Life</strong>, I provide trusted handholding to help you navigate transitions, unlock untapped potential, and translate insights into lasting impact.
+                  Guided by my signature framework,{" "}
+                  <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+                    The TEA of Your Life
+                  </strong>
+                  , I provide trusted handholding to help you navigate transitions, unlock untapped potential, and translate insights into lasting impact.
                 </p>
               </div>
 
@@ -202,7 +212,11 @@ export default function MentoringPage() {
                 Mentoring is a journey of learning, sharing experiences and discovering new possibilities. Through meaningful conversations, practical insights and personalised guidance, mentoring creates a supportive space to explore aspirations, gain clarity, build confidence and navigate professional and personal growth. It is about drawing on experience and perspectives to empower individuals to make informed choices and move forward with purpose.
               </p>
               <p className="m-0">
-                Guided by my signature framework, <strong className="font-semibold text-[#141414]">The TEA of Your Life</strong>, I provide trusted handholding to help you navigate transitions, unlock untapped potential, and translate insights into lasting impact.
+                Guided by my signature framework,{" "}
+                <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+                  The TEA of Your Life
+                </strong>
+                , I provide trusted handholding to help you navigate transitions, unlock untapped potential, and translate insights into lasting impact.
               </p>
             </div>
 

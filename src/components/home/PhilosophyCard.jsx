@@ -169,7 +169,7 @@ export const PHILOSOPHY_CARDS = [
     Icon: LightbulbIdeaIcon,
     textId: "frame38",
     title: "What do I believe?",
-    description: "Our beliefs influence our thoughts and how we respond to opportunities",
+    description: "Our beliefs influence our thoughts and how we respond to opportunities.",
   },
   {
     id: "frame33",

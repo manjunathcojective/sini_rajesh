@@ -22,6 +22,7 @@ const instrumentSans = Instrument_Sans({
 });
 
 export const metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://sinirajesh.com"),
   title: "Dr. Sini Rajesh | Founder of Igniting Mindz",
   description:
     "Transform from Within, Grow with Clarity, Create Lasting Impact. Dr. Sini Rajesh - Mentor, HR Expert, Board Advisor, Organisation Development Specialist, Life Coach, Happypreneur.",
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       className={`${cormorantGaramond.variable} ${manrope.variable} ${instrumentSans.variable}`}
     >

@@ -13,8 +13,15 @@ const DEFAULT_QUESTIONS = [
   {
     id: "faq-2",
     question: "What is one-on-one coaching and how does it work?",
-    answer:
-      "One-on-one coaching is a personalized, confidential partnership designed to help you gain clarity, dismantle limiting beliefs, and align your choices with your authentic goals. Through reflective inquiry and my signature framework, The TEA of Your Life, we create structured strategies and actionable steps tailored specifically to your journey.",
+    answer: (
+      <>
+        One-on-one coaching is a personalized, confidential partnership designed to help you gain clarity, dismantle limiting beliefs, and align your choices with your authentic goals. Through reflective inquiry and my signature framework,{" "}
+        <strong className="font-serif font-bold italic text-[1.24em] tracking-[-0.01em] text-[#141414] [-webkit-text-stroke:0.5px_#141414] [text-shadow:_0_0_0.4px_#141414]">
+          The TEA of Your Life
+        </strong>
+        , we create structured strategies and actionable steps tailored specifically to your journey.
+      </>
+    ),
   },
 ];
 

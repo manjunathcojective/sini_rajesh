@@ -4,6 +4,25 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 
+const STORY_PARAGRAPHS = [
+  <>
+    Hello, I’m Dr. Sini Rajesh, a Mentor, HR Expert, Organisation Development
+    Specialist, Life Coach, a Happypreneur, and the Founder of{" "}
+    <strong className="font-bold text-[#141414]">Igniting Mindz.</strong>
+  </>,
+  "My titles describe different dimensions of my work, but beyond them, I am simply someone who loves people, loves learning, enjoys meaningful conversations, celebrates the little wins, and genuinely finds joy in helping others grow. I love what I do. And if there is one thing that nearly three decades of working with people and organisations has taught me, it is this: there is far more potential within us than we often realise.",
+  <>
+    My journey in Human Resources took me through corporate leadership,
+    entrepreneurship, mentoring, coaching, leadership development, and
+    organisation transformation. But through all these different roles, one
+    thing has remained constant -{" "}
+    <strong className="font-bold text-[#141414]">
+      my passion for people and their potential.
+    </strong>
+  </>,
+  "Today, I bring together my experience in HR, Organisation Development, leadership, mindset, human behaviour, mentoring and coaching to inspire individuals, leaders and organisations to explore possibilities, grow with greater clarity and confidence, and create meaningful transformation.",
+];
+
 export default function AboutMe() {
   return (
     <section
@@ -94,38 +113,12 @@ export default function AboutMe() {
                 transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                 className="flex flex-col w-full gap-3 font-sans font-normal text-[16px] leading-[1.4] text-[#141414] text-justify"
               >
-                <p className="m-0">
-                  Hello, I’m Dr. Sini Rajesh, a Mentor, HR Expert, Organisation
-                  Development Specialist, Life Coach and a Happypreneur, the
-                  Founder of Igniting Mindz.
-                </p>
-                <p className="m-0">
-                  My titles describe different dimensions of my work, but beyond
-                  them, I am simply someone who loves people, loves learning,
-                  enjoys meaningful conversations, celebrates the little wins,
-                  and genuinely finds joy in helping others grow.
-                </p>
-                <p className="m-0">
-                  I genuinely love what I do. And if there is one thing that
-                  nearly three decades of working with people and organisations
-                  has taught me, it is this: there is far more potential within
-                  us than we often realise.
-                </p>
-                <p className="m-0">
-                  My journey in Human Resources took me through corporate
-                  leadership, entrepreneurship, mentoring, coaching, leadership
-                  development, and organisation transformation. But through all
-                  these different roles, one thing has remained constant my
-                  passion for people and their potential.
-                </p>
-                <p className="m-0">
-                  Today, I bring together my experience in HR, Organisation
-                  Development, leadership, mindset, human behaviour, mentoring
-                  and coaching to inspire individuals, leaders and organisations
-                  to explore possibilities, grow with greater clarity and
-                  confidence, and create meaningful transformation.
-                </p>
-                <div className="font-serif font-bold italic text-[20px] leading-[1.4] text-[#141414] m-0 pt-1">
+                {STORY_PARAGRAPHS.map((para, i) => (
+                  <p key={i} className="m-0">
+                    {para}
+                  </p>
+                ))}
+                <div className="font-serif font-bold italic text-[18px] xl:text-[20px] leading-[1.4] text-[#141414] [-webkit-text-stroke:0.25px_#141414] m-0 pt-1">
                   There is far more potential within us than we often realise.
                 </div>
               </motion.div>
@@ -240,38 +233,12 @@ export default function AboutMe() {
 
           {/* 4. Story Paragraphs */}
           <div className="flex flex-col w-full gap-3 font-sans font-normal text-[clamp(14.5px,0.4vw+13px,16px)] leading-[145%] text-[#141414] text-justify">
-            <p className="m-0">
-              Hello, I’m Dr. Sini Rajesh, a Mentor, HR Expert, Organisation
-              Development Specialist, Life Coach and a Happypreneur, the
-              Founder of Igniting Mindz.
-            </p>
-            <p className="m-0">
-              My titles describe different dimensions of my work, but beyond
-              them, I am simply someone who loves people, loves learning,
-              enjoys meaningful conversations, celebrates the little wins,
-              and genuinely finds joy in helping others grow.
-            </p>
-            <p className="m-0">
-              I genuinely love what I do. And if there is one thing that
-              nearly three decades of working with people and organisations
-              has taught me, it is this: there is far more potential within
-              us than we often realise.
-            </p>
-            <p className="m-0">
-              My journey in Human Resources took me through corporate
-              leadership, entrepreneurship, mentoring, coaching, leadership
-              development, and organisation transformation. But through all
-              these different roles, one thing has remained constant my
-              passion for people and their potential.
-            </p>
-            <p className="m-0">
-              Today, I bring together my experience in HR, Organisation
-              Development, leadership, mindset, human behaviour, mentoring
-              and coaching to inspire individuals, leaders and organisations
-              to explore possibilities, grow with greater clarity and
-              confidence, and create meaningful transformation.
-            </p>
-            <div className="font-serif font-bold italic text-[clamp(17px,1.2vw+14px,20px)] leading-[1.4] text-[#141414] pt-1">
+            {STORY_PARAGRAPHS.map((para, i) => (
+              <p key={i} className="m-0">
+                {para}
+              </p>
+            ))}
+            <div className="font-serif font-bold italic text-[18px] xl:text-[20px] leading-[1.4] text-[#141414] [-webkit-text-stroke:0.25px_#141414] pt-1">
               There is far more potential within us than we often realise.
             </div>
           </div>

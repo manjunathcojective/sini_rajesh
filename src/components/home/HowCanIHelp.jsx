@@ -88,8 +88,10 @@ export default function HowCanIHelp() {
             {/* Description Paragraph */}
             <p className="w-full max-w-[387px] font-sans font-normal text-[#141414]/75 lg:text-[#141414] text-[clamp(14px,13.2px+0.25vw,16px)] leading-[1.3] m-0">
               Igniting Mindz was born from a belief that has guided much of my
-              life and work: When you ignite a mind, you open the door to
-              possibilities.
+              life and work:{" "}
+              <strong className="font-bold italic text-[#141414]">
+                When you ignite a mind, you open the door to possibilities.
+              </strong>
             </p>
           </motion.div>
 
