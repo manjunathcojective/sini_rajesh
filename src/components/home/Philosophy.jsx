@@ -37,11 +37,7 @@ export default function Philosophy() {
               alt="My Philosophy"
               fill
               priority
-              className="object-cover transition-transform duration-700 hover:scale-[1.28]"
-              style={{
-                transform: "scale(1.24) translate(38px, -23px)",
-                transformOrigin: "center center",
-              }}
+              className="object-cover object-center transition-transform duration-700 hover:scale-105"
               sizes="(max-width: 1279px) 50vw, 621px"
             />
           </motion.div>
