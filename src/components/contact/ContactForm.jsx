@@ -215,6 +215,8 @@ export default function ContactForm() {
           ? `${formData.countryCode} ${formData.phone.trim()}`
           : "";
 
+        const currentUrl = typeof window !== "undefined" ? window.location.href : "";
+
         const res = await fetch("/api/contact", {
           method: "POST",
           headers: {
@@ -229,6 +231,7 @@ export default function ContactForm() {
             organization: formData.organization.trim(),
             service: formData.service,
             message: formData.message.trim(),
+            sourceUrl: currentUrl,
           }),
         });
 
@@ -264,6 +267,7 @@ export default function ContactForm() {
             organization: formData.organization.trim() || "Not provided",
             service: formData.service || "General Inquiry",
             message: formData.message.trim() || "No message provided",
+            "Submitted From": currentUrl || "Website Form",
             _subject: `New Website Inquiry from ${formData.firstName.trim()} ${formData.lastName.trim()}`,
             _template: "table",
             _captcha: "false",

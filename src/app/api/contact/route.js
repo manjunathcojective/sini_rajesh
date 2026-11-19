@@ -10,8 +10,12 @@ const FORMSUBMIT_TOKEN = "0d301ed05ffe056a530f5320794928cc";
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { firstName, lastName, name, email, phone, organization, service, message } = body;
+    const { firstName, lastName, name, email, phone, organization, service, message, sourceUrl: clientSourceUrl } = body;
     const fullName = name || `${firstName || ""} ${lastName || ""}`.trim();
+
+    // Determine the exact URL/page/domain from which the form was submitted
+    const refererHeader = request.headers.get("referer") || request.headers.get("origin") || "";
+    const sourceUrl = clientSourceUrl || refererHeader || "Direct Submission";
 
     if (!fullName || !email) {
       return NextResponse.json(
@@ -97,6 +101,12 @@ export async function POST(request) {
                   <td style="padding: 10px 0; font-weight: 600; color: #595959;">Service / Area:</td>
                   <td style="padding: 10px 0; color: #BA676A; font-weight: 600;">${service || "General Inquiry"}</td>
                 </tr>
+                <tr style="border-bottom: 1px solid #F0F0F0;">
+                  <td style="padding: 10px 0; font-weight: 600; color: #595959;">Submitted From:</td>
+                  <td style="padding: 10px 0; color: #1A1A1A; word-break: break-all;">
+                    <a href="${sourceUrl}" style="color: #BA676A; text-decoration: underline;" target="_blank" rel="noopener noreferrer">${sourceUrl}</a>
+                  </td>
+                </tr>
                 <tr>
                   <td style="padding: 14px 0 6px 0; font-weight: 600; color: #595959; vertical-align: top;">Message:</td>
                   <td style="padding: 14px 0 6px 0; color: #1A1A1A; line-height: 1.6; white-space: pre-wrap;">${message || "No message provided."}</td>
@@ -104,7 +114,7 @@ export async function POST(request) {
               </table>
             </div>
             <div style="background-color: #F8F8F8; padding: 14px 28px; font-size: 12px; color: #777777; border-top: 1px solid #EAEAEA;">
-              This email was sent from the contact form on Dr. Sini Rajesh website. You can reply directly to this email to contact ${fullName}.
+              This email was sent from the contact form on Dr. Sini Rajesh website (<a href="${sourceUrl}" style="color: #777777;">${sourceUrl}</a>). You can reply directly to this email to contact ${fullName}.
             </div>
           </div>
         `;
@@ -205,6 +215,12 @@ export async function POST(request) {
                   <td style="padding: 10px 0; font-weight: 600; color: #595959;">Service / Area:</td>
                   <td style="padding: 10px 0; color: #BA676A; font-weight: 600;">${service || "General Inquiry"}</td>
                 </tr>
+                <tr style="border-bottom: 1px solid #F0F0F0;">
+                  <td style="padding: 10px 0; font-weight: 600; color: #595959;">Submitted From:</td>
+                  <td style="padding: 10px 0; color: #1A1A1A; word-break: break-all;">
+                    <a href="${sourceUrl}" style="color: #BA676A; text-decoration: underline;" target="_blank" rel="noopener noreferrer">${sourceUrl}</a>
+                  </td>
+                </tr>
                 <tr>
                   <td style="padding: 14px 0 6px 0; font-weight: 600; color: #595959; vertical-align: top;">Message:</td>
                   <td style="padding: 14px 0 6px 0; color: #1A1A1A; line-height: 1.6; white-space: pre-wrap;">${message || "No message provided."}</td>
@@ -212,7 +228,7 @@ export async function POST(request) {
               </table>
             </div>
             <div style="background-color: #F8F8F8; padding: 14px 28px; font-size: 12px; color: #777777; border-top: 1px solid #EAEAEA;">
-              This email was sent from the contact form on Dr. Sini Rajesh website. You can reply directly to this email to contact ${fullName}.
+              This email was sent from the contact form on Dr. Sini Rajesh website (<a href="${sourceUrl}" style="color: #777777;">${sourceUrl}</a>). You can reply directly to this email to contact ${fullName}.
             </div>
           </div>
         `;
@@ -262,6 +278,7 @@ export async function POST(request) {
       phone: phone || "Not provided",
       organization: organization || "Not provided",
       "Selected Service": service || "General Inquiry",
+      "Submitted From": sourceUrl,
       message: message || "",
       _subject: `New Inquiry from ${fullName} - Dr. Sini Rajesh Website`,
       _template: "table",
