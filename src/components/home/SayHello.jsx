@@ -267,26 +267,57 @@ export default function SayHello({
           {/* ======================================================= */}
           {/* Right Image Banner                                       */}
           {/* ======================================================= */}
+
+          {/* 1. Mobile & Tablet (< 1024px): 16:9 Aspect Ratio (Y-axis never zooms in, heads never cropped) */}
           <motion.div
-            id="say-hello-image-banner"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
+            id="say-hello-image-banner-mobile"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className={`relative overflow-hidden w-full h-[clamp(240px,38vw,400px)] rounded-[12px] group/photo ${
-              isAltHeading
-                ? "flex-shrink-0 lg:flex-[47] lg:h-[clamp(320px,27.78vw,400px)]"
-                : "lg:flex-[47] lg:w-auto lg:h-[clamp(320px,27.78vw,400px)] xl:flex-none xl:flex-shrink-0 xl:w-[501px] xl:h-[400px]"
-            }`}
+            className="block lg:hidden relative overflow-hidden w-full aspect-[16/9] rounded-[12px] bg-[#F5F3F1]"
           >
             <Image
               src="/images/say-hello.webp"
               alt="Say Hello"
               fill
               priority
-              sizes="(max-width: 767px) 100vw, (max-width: 1200px) 100vw, 43vw"
-              className="object-cover transition-transform duration-700 ease-out group-hover/photo:scale-105"
+              sizes="(max-width: 767px) 94vw, (max-width: 1023px) 90vw, 100vw"
+              className="object-cover object-center"
             />
+          </motion.div>
+
+          {/* 2. Desktop (>= 1024px): 501x400 Card with Fluid 30px X Offset (Centered Y-axis) */}
+          <motion.div
+            id="say-hello-image-banner"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className={`hidden lg:block relative overflow-hidden rounded-[12px] group/photo bg-[#F5F3F1] ${
+              isAltHeading
+                ? "flex-shrink-0 lg:flex-[47] lg:h-[clamp(320px,27.78vw,400px)]"
+                : "lg:flex-[47] lg:w-auto lg:h-[clamp(320px,27.78vw,400px)] xl:flex-none xl:flex-shrink-0 xl:w-[501px] xl:h-[400px]"
+            }`}
+          >
+            <div
+              className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none"
+              style={{
+                transform: "translate(clamp(-30px, -2.08vw, -15px), 0px)",
+                transformOrigin: "center center",
+              }}
+            >
+              <div className="relative w-[142.2%] h-full shrink-0">
+                <Image
+                  src="/images/say-hello.webp"
+                  alt="Say Hello"
+                  fill
+                  priority
+                  sizes="(max-width: 1279px) 47vw, 501px"
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
