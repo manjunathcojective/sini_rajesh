@@ -118,13 +118,24 @@ export default function Footer() {
         {/* 1. TABLET & MOBILE TOP BRAND HEADER (Figma Exact: Full Width at Top)       */}
         {/* ========================================================================= */}
         <div className="flex lg:hidden flex-col w-full gap-2.5">
-          <div>
-            <h2 className="font-serif font-bold italic text-[clamp(26px,3vw,32px)] text-white leading-tight m-0">
-              Sini Rajesh
-            </h2>
-            <p className="font-sans font-normal text-[clamp(13px,1vw+8px,15px)] text-white/80 leading-normal m-0 mt-0.5">
-              Founder – Igniting Mindz
-            </p>
+          <div className="flex items-center gap-3.5">
+            <div className="relative h-[40px] w-[62px] sm:h-[45px] sm:w-[70px] shrink-0">
+              <Image
+                src="/images/footer-logo.webp"
+                alt="Igniting Mindz Logo"
+                fill
+                sizes="(max-width: 640px) 62px, 70px"
+                className="object-contain object-left"
+              />
+            </div>
+            <div>
+              <h2 className="font-serif font-bold italic text-[clamp(26px,3vw,32px)] text-white leading-tight m-0">
+                Sini Rajesh
+              </h2>
+              <p className="font-sans font-normal text-[clamp(13px,1vw+8px,15px)] text-white/80 leading-normal m-0 mt-0.5 whitespace-nowrap">
+                Founder – Igniting Mindz
+              </p>
+            </div>
           </div>
           <div className="w-full h-[1px] bg-white/20 my-1" />
           <p className="font-sans font-normal text-[clamp(13.5px,1vw+8px,15px)] text-white/95 leading-[145%] m-0">
@@ -255,13 +266,24 @@ export default function Footer() {
         <div className="hidden lg:flex flex-row justify-between items-start gap-12 xl:gap-[100px] w-full">
           {/* Brand Left Column */}
           <div className="flex flex-col w-[320px] xl:w-[350px] shrink-0 gap-3">
-            <div>
-              <h2 className="font-serif font-bold italic text-[32px] text-white leading-tight m-0">
-                Sini Rajesh
-              </h2>
-              <p className="font-sans font-normal text-[15px] text-white/80 leading-normal m-0 mt-1">
-                Founder – Igniting Mindz
-              </p>
+            <div className="flex items-center gap-3.5">
+              <div className="relative h-[46px] w-[72px] shrink-0">
+                <Image
+                  src="/images/footer-logo.webp"
+                  alt="Igniting Mindz Logo"
+                  fill
+                  sizes="72px"
+                  className="object-contain object-left"
+                />
+              </div>
+              <div>
+                <h2 className="font-serif font-bold italic text-[32px] text-white leading-tight m-0 whitespace-nowrap">
+                  Sini Rajesh
+                </h2>
+                <p className="font-sans font-normal text-[15px] text-white/80 leading-normal m-0 mt-0.5 whitespace-nowrap">
+                  Founder – Igniting Mindz
+                </p>
+              </div>
             </div>
             <div className="w-full h-[1px] bg-white/20 my-2" />
             <p className="font-sans font-normal text-[15px] text-white/95 leading-[140%] m-0">

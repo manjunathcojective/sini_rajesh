@@ -3,61 +3,103 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+// Helper to compute 2-letter monogram initials (ignoring honorifics like Dr.)
+function getInitials(name) {
+  if (!name) return "";
+  const clean = name.replace(/^(Dr\.|Mr\.|Mrs\.|Ms\.)\s+/i, "").trim();
+  const parts = clean.split(/\s+/).filter(Boolean);
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+// Sophisticated brand-consistent palette for monogram avatar badges
+const AVATAR_PALETTE = [
+  { bg: "bg-[#D07578]", text: "text-white" }, // Rose Terracotta
+  { bg: "bg-[#BA676A]", text: "text-white" }, // Deep Terracotta
+  { bg: "bg-[#C4865B]", text: "text-white" }, // Warm Ochre
+  { bg: "bg-[#7A8B77]", text: "text-white" }, // Muted Sage
+  { bg: "bg-[#556377]", text: "text-white" }, // Slate Blue
+  { bg: "bg-[#8D566B]", text: "text-white" }, // Wine Berry
+  { bg: "bg-[#9A7B56]", text: "text-white" }, // Warm Sandalwood
+];
+
 const TESTIMONIALS = [
   {
-    name: "Sarah Thompson",
-    role: "CEO - Apple INC",
-    avatar: "/images/testimonial-image.webp",
-    quote: "Working with Dr. Sini Rajesh gave our executive team the clarity and alignment we needed during high-growth scaling.",
+    name: "Dr. Bhawna Nigam",
+    role: "Professor & DBA Coach",
+    quote: "Dr. Sini Rajesh is an extraordinary mentor and sounding board. Her workshops ignite real, lasting change.",
     rating: "5.0",
   },
   {
-    name: "David Chen",
-    role: "VP People - TechGlobal",
-    avatar: "/images/testimonial-image.webp",
-    quote: "Her organisation development interventions completely reshaped our leadership pipeline and cultural cohesion.",
+    name: "Jyothi Kumar",
+    role: "Sr. Manager HR at Celstream Technologies",
+    quote: "Sini has the rare ability to connect mindset work with real-world results. After her coaching, I not only experienced personal growth but also became more effective as a leader in my organization.",
+    rating: "4.9",
+  },
+  {
+    name: "Preenand Premacharan",
+    role: "ED & CEO at Hebron",
+    quote: "Dr. Sini’s strategic counsel on board dynamics and leadership succession has been invaluable to our enterprise.",
     rating: "5.0",
   },
   {
-    name: "Aarti Sharma",
-    role: "Director of HR - FinCorp",
-    avatar: "/images/testimonial-image.webp",
-    quote: "The TEA of Your Life coaching framework helped me unlock personal clarity and lead with authentic empathy.",
-    rating: "5.0",
-  },
-  {
-    name: "Michael Roberts",
-    role: "Managing Director - Apex Group",
-    avatar: "/images/testimonial-image.webp",
-    quote: "Incredible depth and pragmatic wisdom. Sini brings a rare combination of empathy and strategic acumen.",
-    rating: "5.0",
-  },
-  {
-    name: "Priya Nair",
-    role: "Founder - Elevate Studios",
-    avatar: "/images/testimonial-image.webp",
+    name: "Satish N",
+    role: "Co-Founder & Director at Opt IT Technologies",
     quote: "Transformative coaching that goes far beyond surface-level advice. It shifted how I see myself and my business.",
+    rating: "4.8",
+  },
+  {
+    name: "Nanaiah Appanna",
+    role: "Head of Business Development at Lodestar 3D",
+    quote: "Incredible depth and pragmatic wisdom. Sini brings a rare combination of empathy and strategic acumen.",
+    rating: "4.9",
+  },
+  {
+    name: "Mini Thomas",
+    role: "Principal, St. Joseph's College",
+    quote: "Dr. Sini helped me see my potential in a way I hadn't before. Her guidance gave me the confidence to overcome my doubts and a clearer sense of direction in both my life and career.",
     rating: "5.0",
   },
   {
-    name: "James Wilson",
-    role: "Chief People Officer - Lumina",
-    avatar: "/images/testimonial-image.webp",
-    quote: "Dr. Sini Rajesh is an extraordinary mentor and sounding board. Her workshops ignited real, lasting change.",
+    name: "Santhosh Mogili",
+    role: "Founder & CTO at Opt IT Technologies",
+    quote: "Working with Dr. Sini Rajesh gave our executive team the clarity and alignment we need during high-growth scaling.",
+    rating: "4.9",
+  },
+  {
+    name: "Bhakti Vij",
+    role: "Global HR Director at Widas Group",
+    quote: "Sini is not just a coach, she is a mentor who genuinely cares. Her warmth, wisdom, and positive energy make every interaction inspiring. She has been a huge support in my growth journey.",
     rating: "5.0",
   },
   {
-    name: "Ananya Deshmukh",
-    role: "Head of Talent - Innovate Labs",
-    avatar: "/images/testimonial-image.webp",
-    quote: "The clarity and psychological safety she creates in leadership teams is unlike anything I have seen.",
+    name: "Thrishala",
+    role: "HR Head at Opt IT Technologies",
+    quote: "Working with Sini completely shifted how I see challenges and opportunities. Instead of feeling stuck, I now feel empowered to take action. Her coaching has been one of the best investments in myself.",
+    rating: "4.8",
+  },
+  {
+    name: "Rachana Upadhyay",
+    role: "Entrepreneur",
+    quote: "What I love about Dr. Sini’s coaching is that it’s not just theory—she gives you practical tools you can apply immediately. Her sessions are powerful, engaging, and leave you with actionable strategies to create real change.",
     rating: "5.0",
   },
   {
-    name: "Robert Taylor",
-    role: "Board Member & Advisor",
-    avatar: "/images/testimonial-image.webp",
-    quote: "Her strategic counsel on board dynamics and leadership succession has been invaluable to our enterprise.",
+    name: "Ajith George",
+    role: "Group Product Supervisor at Molex",
+    quote: "Sini’s sessions are life-changing. She doesn’t just coach you for success; she coaches you for happiness. I feel more fulfilled, balanced, and at peace with myself after working with her.",
+    rating: "4.9",
+  },
+  {
+    name: "Akash Indrabab",
+    role: "Service Portfolio Manager at Opt IT Technologies",
+    quote: "In just a few sessions, Sini helped me achieve breakthroughs I had been struggling with for years. Her ability to guide you gently yet firmly towards transformation is remarkable.",
+    rating: "4.9",
+  },
+  {
+    name: "Lakshitha M.N",
+    role: "Student - Bachelor of Arts, St. Joseph’s University",
+    quote: "Dr. Sini helped me identify the limiting beliefs that were holding me back for years. With her guidance, I was able to reframe my thinking and take steps I never thought possible.",
     rating: "5.0",
   },
 ];
@@ -196,7 +238,7 @@ export default function Testimonials() {
                 <article
                   key={`${item.name}-${index}`}
                   id={`testimonial-card-${index}`}
-                  className="snap-start flex flex-col justify-between w-[clamp(260px,20.3vw,292px)] h-[clamp(290px,21.6vw,311px)] p-[clamp(16px,1.4vw,20px)] rounded-[clamp(10px,0.85vw,12px)] bg-[#FDF7F2] border border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(208,117,120,0.12)] hover:border-[#D07578]/30 hover:-translate-y-1 transition-all duration-300 shrink-0 select-none"
+                  className="snap-start flex flex-col justify-between w-[clamp(260px,21vw,300px)] min-h-[310px] h-auto p-[clamp(16px,1.4vw,20px)] rounded-[clamp(10px,0.85vw,12px)] bg-[#FDF7F2] border border-transparent shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(208,117,120,0.12)] hover:border-[#D07578]/30 hover:-translate-y-1 transition-all duration-300 shrink-0 select-none"
                   aria-label={`Testimonial from ${item.name}`}
                 >
                   {/* Card Body: Rating & Quote */}
@@ -228,7 +270,7 @@ export default function Testimonials() {
                     </div>
 
                     {/* Testimonial Quote */}
-                    <p className="font-sans font-normal text-[clamp(13.5px,1.1vw,16px)] leading-[140%] text-[#141414] m-0 line-clamp-4">
+                    <p className="font-sans font-normal text-[clamp(13px,1vw,15px)] leading-[145%] text-[#141414] m-0 line-clamp-5">
                       {item.quote}
                     </p>
                   </div>
@@ -238,26 +280,25 @@ export default function Testimonials() {
                     id={`testimonial-author-footer-${index}`}
                     className="flex items-center w-full gap-[clamp(10px,1vw,15px)] pt-[clamp(6px,0.7vw,10px)]"
                   >
-                    {/* Testimonial Avatar Image */}
-                    <div className="relative overflow-hidden shrink-0 w-[clamp(36px,2.8vw,40px)] h-[clamp(36px,2.8vw,40px)] rounded-[2px] bg-[#E9E5D2]">
-                      <Image
-                        src={item.avatar}
-                        alt={item.name}
-                        fill
-                        className="object-cover"
-                        sizes="40px"
-                      />
+                    {/* Testimonial Monogram Initials Avatar */}
+                    <div
+                      className={`relative shrink-0 w-[clamp(38px,2.9vw,44px)] h-[clamp(38px,2.9vw,44px)] rounded-full flex items-center justify-center font-sans font-semibold text-[clamp(13px,1vw,15px)] tracking-wider shadow-sm select-none ${
+                        AVATAR_PALETTE[index % AVATAR_PALETTE.length].bg
+                      } text-white`}
+                      aria-hidden="true"
+                    >
+                      {getInitials(item.name)}
                     </div>
 
                     {/* Author Metadata */}
                     <div
                       id={`testimonial-author-meta-${index}`}
-                      className="flex flex-col justify-center gap-[clamp(2px,0.28vw,4px)] min-w-0 flex-1"
+                      className="flex flex-col justify-center gap-1 min-w-0 flex-1"
                     >
-                      <div className="font-sans font-semibold text-[clamp(14px,1.1vw,16px)] text-[#141414] leading-tight truncate">
+                      <div className="font-sans font-semibold text-[clamp(13.5px,1vw,15.5px)] text-[#141414] leading-tight">
                         {item.name}
                       </div>
-                      <div className="font-sans font-normal text-[clamp(12px,0.97vw,14px)] text-[#141414]/75 leading-tight truncate">
+                      <div className="font-sans font-normal text-[clamp(11.5px,0.85vw,13px)] text-[#141414]/75 leading-snug line-clamp-2 break-words">
                         {item.role}
                       </div>
                     </div>
